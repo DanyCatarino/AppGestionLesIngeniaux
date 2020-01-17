@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<style>
+    .example-wrapper { margin: 2em auto; max-width: 400px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+    .error {color: red}
+</style>
+
+<div class="example-wrapper">
+    {% if error %}
+        <div class="alert alert-danger">
+            <span class="error">{{ error.messageKey }}</span>
+        </div>
+    {% endif %}
+        <div class="text-center mb-4">
+            <img src="{{asset('logo_ingéniaux.png')}}" width="166" height="141" alt="Logo Ingéniaux">
+            <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+        </div>
+    <form action="{{ path('security_login') }}" method="post">
+        <div class="form-group">
+            <input placeholder="Votre identifiant" required name="_username" value="{{last_username}}" type="text" class="form-control"> 
+        </div>
+
+        <div class="form-group">
+            <input placeholder="Votre mot de passe" required name="_password" type="password" class="form-control"> 
+        </div>
+
+        {# <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div> #}
+
+        <div class="form-group">
+        <form action="{{ path('security_login') }}" method="post">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+        </div>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; Les Ingéniaux</p>
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}
