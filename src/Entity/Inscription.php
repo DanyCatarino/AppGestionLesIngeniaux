@@ -28,19 +28,19 @@ class Inscription
 
     /**
     * @ORM\ManyToOne(targetEntity="Inscrit", inversedBy="inscription")
-    * @ORM\JoinColumn()
+    * @ORM\JoinColumn(name="inscrit_id", referencedColumnName="id", nullable=true)
     **/
     private $inscrit; 
 
     /**
     * @ORM\ManyToOne(targetEntity="Instance", inversedBy="inscription")
-    * @ORM\JoinColumn()
+    * @ORM\JoinColumn(name="instance_id", referencedColumnName="id", nullable=true)
     **/
     private $instance; 
 
     /**
     * @ORM\ManyToOne(targetEntity="Canal", inversedBy="inscription")
-    * @ORM\JoinColumn()
+    * @ORM\JoinColumn(name="canal_id", referencedColumnName="id", nullable=true)
     **/
     private $canal;
 

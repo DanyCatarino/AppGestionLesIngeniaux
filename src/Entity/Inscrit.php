@@ -45,7 +45,7 @@ class Inscrit
 
     /**
     * @ORM\ManyToOne(targetEntity="Contact", inversedBy="inscrit")
-    * @ORM\JoinColumn()
+    * @ORM\JoinColumn(name="contact_id", referencedColumnName="id", nullable=true)
     **/
     private $contact;
 
