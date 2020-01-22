@@ -44,6 +44,6 @@ class ViewController extends AbstractController
          }
         
         //redirection vers la page donnée
-        return $this->render('view/atelier.html.twig',array('lesAteliers'=>$atelier,'message'=>$message));
+        return $this->render('view/viewAteliers.html.twig',array('lesAteliers'=>$atelier,'message'=>$message));
     }
 }

@@ -50,7 +50,7 @@ class AddController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($atelier);
             $em->flush();
-             return $this->redirectToRoute('addAtelier');
+             return $this->redirectToRoute('listeAteliers');
          }
         
         return $this->render('add/addAtelier.html.twig', array(
