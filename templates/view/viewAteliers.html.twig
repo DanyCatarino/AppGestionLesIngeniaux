@@ -10,17 +10,19 @@
     <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">Gestion Des Ateliers</h1>
     </div>
-    <form action= "{{ path('addAtelier') }} "method= "POST" >
+    <div class="col text-center">
         <a href="{{path('addAtelier')}}" type="button" class="btn btn-link">Ajouter un Atelier</button></a>
+    </div>
     <div class="table-responsive-sm">
     <table class="table table-bordered">
-    <thead class="thead-light">
+    <thead class="thead-dark">
     <tr>
-        <th scope="col">Id</th>
+        <th scope="col">ID</th>
         <th scope="col">Description</th>
         <th scope="col">Statut</th>
         <th scope="col">Type</th>
         <th scope="col">Prix</th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +33,7 @@
         <td>{{atelier.statut}}</td>
         <td>{{atelier.type}}</td>
         <td>{{atelier.prix}}</td>
+        <td><a class="btn btn-danger" href="{{path('delAtelier',{'id': atelier.id})}}">Supprimer</a></td>
     </tr>
     </div>
     {%endfor%}

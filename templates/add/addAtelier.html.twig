@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block title %}Hello AddController!{% endblock %}
 
 {% block body %}
@@ -7,14 +7,10 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+<div class="jumbotron text-center ">
+  <h1 class="display-4">Gestion des ateliers</h1>
+</div>
 <div class="example-wrapper">
-    <h1> Veuillez ajouter un Atelier : </h1>
-        {{ form_start(form)}}
-             {{ form_row(form.description) }}
-             {{ form_row(form.statut) }}
-             {{ form_row(form.type) }}
-             {{ form_row(form.prix) }}
-        {{ form_end(form) }}
+{{ form(form) }}
 </div>
 {% endblock %}
