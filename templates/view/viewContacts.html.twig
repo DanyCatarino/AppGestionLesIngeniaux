@@ -1,43 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}!{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-<div class="example-wrapper">
-     <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Gestion Des contacts</h1>
-    </div>
-    <div class="col text-center">
-        <a href="{{path('addContact')}}" type="button" class="btn btn-link">Ajouter un contact</button></a>
-    </div>
-    <div class="table-responsive-sm">
-    <table class="table table-bordered">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">Adresse Mail</th>
-        <th scope="col">Date Naissance</th>
-        <th scope="col">Telephone</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    {%for contact in lesContacts%}
-        <th scope="row">{{contact.id}}</th>
-        <td>{{contact.nom}}</td>
-        <td>{{contact.prenom}}</td>
-        <td>{{contact.mail}}</td>
-        <td>{{contact.dateNaissance|format_datetime(locale='fr')}}</td>
-        <td>{{contact.telephone}}</td>
-        <td><a class="btn btn-danger" href="{{path('delContact',{'id': contact.id})}}">Supprimer</a></td>
-    </tr>
-    {%endfor%}
+
+<div class="jumbotron text-center p-4">
+    <h1 class="display-4">Liste des contacts</h1>
 </div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{{path('addContact')}}" type="button" class="btn btn-primary">Ajouter un contact</button></a>
+            </div>
+        </div>
+    <div><br/>
+    <div class="table-responsive-sm">
+        <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Adresse Mail</th>
+                        <th scope="col">Date Naissance</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+            {%for contact in lesContacts%}
+                <tr>
+                    <th scope="row">{{contact.id}}</th>
+                    <td>{{contact.nom}}</td>
+                    <td>{{contact.prenom}}</td>
+                    <td>{{contact.mail}}</td>
+                    <td>{{contact.dateNaissance|date("m/d/Y")}}</td>
+                    <td>{{contact.telephone}}</td>
+                    <td><a class="btn btn-danger" href="{{path('delContact',{'id': contact.id})}}">Supprimer</a></td>
+                    <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
 
 {% endblock %}
