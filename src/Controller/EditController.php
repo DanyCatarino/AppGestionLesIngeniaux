@@ -49,11 +49,7 @@ class EditController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('listeSalles');
     }
-}
 
-use App\Form\AtelierType;
-use App\Entity\Contact;
-use App\Form\ContactType;
     /**
      * @Route("/delAtelier/{id}", name="delAtelier")
      */
