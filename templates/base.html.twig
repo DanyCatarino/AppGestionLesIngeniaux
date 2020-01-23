@@ -6,7 +6,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Les Ingéniaux{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body style="background-color:#FFFFFF;">
@@ -22,10 +22,14 @@
                 <img src="{{asset('logo_ingéniaux.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
                 Les Ingéniaux
             </a>
-            <ul class="navbar-nav">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a href="{{ path('menu') }}" class="nav-link">Menu</a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
                 </li>
+            </ul>
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

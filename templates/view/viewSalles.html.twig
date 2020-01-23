@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<br/><h3 class="text-center">Liste des salles</h1></br>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-primary text-center" href="{{path('addSalle')}}">Ajouter une salle</a>
+        </div>
+    </div><br/>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+                <th></th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for salle in allSalles %}
+        <tr>
+            <th scope="row">{{salle.id}}</th>
+            <td>{{salle.nomSalle}}</td>
+            <td><a class="btn btn-danger" href="{{path('delSalle', {'id' : salle.id})}}">Supprimer</a></br></td>
+            <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %} 

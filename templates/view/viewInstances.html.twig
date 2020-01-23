@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<br/><h3 class="text-center">Liste des instances</h1></br>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-primary text-center" href="{{path('addInstance')}}">Ajouter une instance</a>
+        </div>
+    </div><br/>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Public</th>
+            <th scope="col">ID Atelier</th>
+            <th scope="col">Atelier</th>
+            <th scope="col">Salle</th>
+            <th scope="col">Animateur</th>
+            <th></th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for instance in allInstances %}
+        <tr>
+            <th scope="row">{{instance.id}}</th>
+            <td>{{instance.dateInstance|format_datetime(locale='fr')}}</td>
+            <td>{{instance.public}}</td>
+            <td>{{instance.atelier.id}}</td>
+            <td>{{instance.atelier.description}}</td>
+            <td>{{instance.salle.nomSalle}}</td>
+            <td>{{instance.animateur.nom}}</td>
+            <td><a class="btn btn-danger" href="{{path('delInstance', {'id' : instance.id})}}">Supprimer</a></br></td>
+            <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %} 

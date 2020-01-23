@@ -20,13 +20,13 @@ class AgeAtelier
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Age")
-     * @ORM\JoinColumn(name="age_id",referencedColumnName="id",nullable=false)
+     * @ORM\JoinColumn(name="age_id", referencedColumnName="id", nullable=false)
      */
     private $age;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Atelier")
-     * @ORM\JoinColumn(name="atelier_id",referencedColumnName="id",nullable=false)
+     * @ORM\JoinColumn(name="atelier_id", referencedColumnName="id", nullable=false)
      */
     private $atelier;
 

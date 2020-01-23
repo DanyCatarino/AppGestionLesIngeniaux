@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}!{% endblock %}
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -10,8 +9,8 @@
     <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">Gestion Des Ateliers</h1>
     </div>
-    <form action= "{{ path('ajoutAtelier') }} "method= "POST" >
-        <a href="{{path('ajoutAtelier')}}" type="button" class="btn btn-link">Ajouter un Atelier</button></a>
+    <form action= "{{ path('addAtelier') }} "method= "POST" >
+        <a href="{{path('addAtelier')}}" type="button" class="btn btn-link">Ajouter un Atelier</button></a>
     <div class="table-responsive-sm">
     <table class="table table-bordered">
     <thead class="thead-light">

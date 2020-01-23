@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<br/><h3 class="text-center">Liste des animateurs</h1></br>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-primary text-center" href="{{path('addAnimateur')}}">Ajouter un animateur</a>
+        </div>
+    </div><br/>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th></th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for animateur in allAnimateurs %}
+        <tr>
+            <th scope="row">{{animateur.id}}</th>
+            <td>{{animateur.nom}}</td>
+            <td>{{animateur.prenom}}</td>
+            <td><a class="btn btn-danger" href="{{path('delAnimateur', {'id' : animateur.id})}}">Supprimer</a></br></td>
+            <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %} 

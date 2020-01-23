@@ -48,12 +48,15 @@ class Atelier
     **/
     private $ageAtelier;
 
+    public function __toString() {
+        return (string) $this->id;
+    }
+
     public function __construct()
     {
         $this->instance = new ArrayCollection();
         $this->ageAtelier = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;

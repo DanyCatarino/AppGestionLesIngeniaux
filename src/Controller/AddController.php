@@ -5,25 +5,42 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\AtelierType;
-use App\Entity\Atelier;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\AnimateurType;
+use App\Form\AtelierType;
+use App\Form\InstanceType;
+use App\Form\SalleType;
+use App\Entity\Instance;
+use App\Entity\Atelier;
+use App\Entity\Salle;
+use App\Entity\Animateur;
 
 class AddController extends AbstractController
 {
     /**
-     * @Route("/add", name="add")
+     * @Route("/addInstance", name="addInstance")
      */
-    public function index()
-    {
-        return $this->render('add/index.html.twig', [
-            'controller_name' => 'AddController',
-        ]);
+    public function addInstance(Request $request, $instance = null){
+        if($instance == null){
+            $instance = new Instance();
+        }
+        $form = $this->createForm(InstanceType::class, $instance);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($instance);
+            $em->flush();
+            return $this->redirectToRoute('listeInstances');
+        }
+        return $this->render('add/addInstance.html.twig', array('form'=>$form->createView()));
     }
+
     /**
-     * @Route("/ajout",name="ajoutAtelier")
+     * @Route("/addAtelier",name="addAtelier")
      */
-    public function ajoutAtelier(Request $request,$atelier=null)
+    public function addAtelier(Request $request,$atelier=null)
     {
 
         if($atelier == null){
@@ -36,29 +53,49 @@ class AddController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($atelier);
             $em->flush();
-             return $this->redirectToRoute('afficheAtelier');
+             return $this->redirectToRoute('listeAteliers');
          }
         
-        return $this->render('add/ajoutAtelier.html.twig', array(
+        return $this->render('add/addAtelier.html.twig', array(
             'form' => $form->createView(),
         ));
-    
     }
+
     /**
-     * @Route("/affiche",name="afficheAtelier")
+     * @Route("/addAnimateur", name="addAnimateur")
      */
-    public function afficheAtelier(){
+    public function addAnimateur(Request $request, $animateur = null){
+        if($animateur == null){
+            $animateur = new Animateur();
+        }
+        $form = $this->createForm(AnimateurType::class, $animateur);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($animateur);
+            $em->flush();
+            return $this->redirectToRoute('listeAnimateurs');
+        }
+        return $this->render('add/addAnimateur.html.twig', array('form'=>$form->createView()));
+    }
 
-        $atelier= $this->getDoctrine()->getRepository(Atelier::class)->findall(); //retourne toutes les ateliers dans la collection
-
-         if(!$atelier){
-             $message="Il n'y a aucun atelier  disponible"; //pas de atelier créer et affichage d'un message 
-         }
-         else{
-             $message=null; //aucun message si il y'a une atelier
-         }
-        
-         //redirection vers la page donnée
-         return $this->render('view/atelier.html.twig',array('lesAteliers'=>$atelier,'message'=>$message));
-}
+    /**
+     * @Route("/addSalle", name="addSalle")
+     */
+    public function addSalle(Request $request, $salle = null){
+        if($salle == null){
+            $salle = new Salle();
+        }
+        $form = $this->createForm(SalleType::class, $salle);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($salle);
+            $em->flush();
+            return $this->redirectToRoute('listeSalles');
+        }
+        return $this->render('add/addSalle.html.twig', array('form'=>$form->createView()));
+    }
 }

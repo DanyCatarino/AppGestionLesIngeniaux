@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AddController!{% endblock %}
-
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -15,7 +13,6 @@
              {{ form_row(form.statut) }}
              {{ form_row(form.type) }}
              {{ form_row(form.prix) }}
-        <form action= "{{ path('afficheAtelier')}}"method= "POST" >
         {{ form_end(form) }}
 </div>
 {% endblock %}

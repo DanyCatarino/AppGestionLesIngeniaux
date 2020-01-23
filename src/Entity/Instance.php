@@ -35,19 +35,19 @@ class Instance
 
     /**
     * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="instance")
-    * @ORM\JoinColumn(name="atelier_id",referencedColumnName="id",nullable=true)
+    * @ORM\JoinColumn(name="atelier_id", referencedColumnName="id", nullable=true)
     **/
     private $atelier;
 
     /**
     * @ORM\ManyToOne(targetEntity="Salle", inversedBy="instance")
-    * @ORM\JoinColumn(name="salle_id",referencedColumnName="id",nullable=true)
+    * @ORM\JoinColumn(name="salle_id", referencedColumnName="id", nullable=true)
     **/
     private $salle;
 
     /**
     * @ORM\ManyToOne(targetEntity="Animateur", inversedBy="instance")
-    * @ORM\JoinColumn(name="animateur_id",referencedColumnName="id",nullable=true)
+    * @ORM\JoinColumn(name="animateur_id", referencedColumnName="id", nullable=true)
     **/
     private $animateur;
 
