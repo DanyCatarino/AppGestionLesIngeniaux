@@ -4,25 +4,50 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;  
-use App\Entity\Atelier;
-use App\Form\AtelierType;
-use App\Entity\Instance;
 use App\Form\InstanceType;
+use App\Entity\Instance;
+use App\Entity\Atelier;
+use App\Entity\Salle;
+use App\Entity\Animateur;
+use App\Form\AtelierType;
 use App\Entity\Contact;
 use App\Form\ContactType;
+
 class EditController extends AbstractController
 {
     /**
-     * @Route("/edit", name="edit")
+     * @Route("/delInstance/{id}", name="delInstance")
      */
-    public function index()
+    public function delInstance($id, EntityManagerInterface $em)
     {
-        return $this->render('edit/index.html.twig', [
-            'controller_name' => 'EditController',
-        ]);
+        $instance = $this->getDoctrine()->getRepository(Instance::class)->find($id);
+        $em->remove($instance);
+        $em->flush();
+        return $this->redirectToRoute('listeInstances');
+    }
+
+    /**
+     * @Route("/delAnimateur/{id}", name="delAnimateur")
+     */
+    public function delAnimateur($id, EntityManagerInterface $em)
+    {
+        $animateur = $this->getDoctrine()->getRepository(Animateur::class)->find($id);
+        $em->remove($animateur);
+        $em->flush();
+        return $this->redirectToRoute('listeAnimateurs');
+    }
+
+    /**
+     * @Route("/delSalle/{id}", name="delSalle")
+     */
+    public function delSalle($id, EntityManagerInterface $em)
+    {
+        $salle = $this->getDoctrine()->getRepository(Salle::class)->find($id);
+        $em->remove($salle);
+        $em->flush();
+        return $this->redirectToRoute('listeSalles');
     }
     /**
      * @Route("/delAtelier/{id}", name="delAtelier")
@@ -33,6 +58,7 @@ class EditController extends AbstractController
         $em->flush(); 
         return $this->redirectToRoute('listeAteliers');
     }
+    
     /**
      * @Route("/delContact/{id}", name="delContact")
      */
@@ -43,6 +69,7 @@ class EditController extends AbstractController
         return $this->redirectToRoute('listeContacts');
 
     }
+
     /**
      * @Route("/delCanal/{id}", name="delCanal")
      */

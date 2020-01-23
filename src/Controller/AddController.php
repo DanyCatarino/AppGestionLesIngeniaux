@@ -5,9 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\AtelierType;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\AnimateurType;
+use App\Form\AtelierType;
 use App\Form\InstanceType;
+use App\Form\SalleType;
 use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
@@ -35,7 +38,7 @@ class AddController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('listeInstances');
         }
-        return $this->render('add/addInstances.html.twig', array('form'=>$form->createView()));
+        return $this->render('add/addInstance.html.twig', array('form'=>$form->createView()));
     }
 
     /**
@@ -60,7 +63,44 @@ class AddController extends AbstractController
         return $this->render('add/addAtelier.html.twig', array(
             'form' => $form->createView(),
         ));
-    
+    }
+
+    /**
+     * @Route("/addAnimateur", name="addAnimateur")
+     */
+    public function addAnimateur(Request $request, $animateur = null){
+        if($animateur == null){
+            $animateur = new Animateur();
+        }
+        $form = $this->createForm(AnimateurType::class, $animateur);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($animateur);
+            $em->flush();
+            return $this->redirectToRoute('listeAnimateurs');
+        }
+        return $this->render('add/addAnimateur.html.twig', array('form'=>$form->createView()));
+    }
+
+    /**
+     * @Route("/addSalle", name="addSalle")
+     */
+    public function addSalle(Request $request, $salle = null){
+        if($salle == null){
+            $salle = new Salle();
+        }
+        $form = $this->createForm(SalleType::class, $salle);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($salle);
+            $em->flush();
+            return $this->redirectToRoute('listeSalles');
+        }
+        return $this->render('add/addSalle.html.twig', array('form'=>$form->createView()));
     }
     /**
      * @Route("/addContact",name="addContact")

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig'  %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block body %}
 <style>
@@ -6,10 +6,8 @@
     .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
     .error {color: red}
 </style>
-<div class="jumbotron text-center p-4">
-    <h1 class="display-4">Ajouter un atelier</h1>
-</div>
 <div class="example-wrapper">
-{{ form(form) }}
+    <h1 class="h3 mb-3 font-weight-normal">Ajoutez un animateur</h1>
+    {{ form(form) }}
 </div>
-{% endblock %}
+{% endblock %} 

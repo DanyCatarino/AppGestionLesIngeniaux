@@ -1,39 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}!{% endblock %}
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 700px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+<div class="jumbotron text-center p-4">
+    <h1 class="display-4">Liste des canaux</h1>
+</div>
 <div class="example-wrapper">
-     <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Gestion Des canaux</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{{path('addCanal')}}" type="button" class="btn btn-primary">Ajouter un canal</button></a>
+            </div>
+        </div><br/>
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Url</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {%for canal in lesCanaux%}
+                    <tr>
+                        <th scope="row">{{canal.id}}</th>
+                        <td>{{canal.nomCanal}}</td>
+                        <td>{{canal.urlCanal}}</td>
+                        <td><a class="btn btn-danger" href="{{path('delCanal',{'id': canal.id})}}">Supprimer</a></td>
+                        <td><a class="btn btn-primary" href="">Modifier</a></td>
+                    </tr>
+                {%endfor%}
+            </table>
+        </div>
     </div>
-    <div class="col text-center">
-        <a href="{{path('addCanal')}}" type="button" class="btn btn-primary">Ajouter un canal</button></a>
-    </div>
-    <div class="table-responsive-sm">
-    <table class="table table-bordered">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Url</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    {%for canal in lesCanaux%}
-        <th scope="row">{{canal.id}}</th>
-        <td>{{canal.nomCanal}}</td>
-        <td>{{canal.urlCanal}}</td>
-        <td><a class="btn btn-danger" href="{{path('delCanal',{'id': canal.id})}}">Supprimer</a></td>
-        <td><a class="btn btn-info" href="{{path('delCanal',{'id': canal.id})}}">Modifier</a></td>
-    </tr>
-    {%endfor%}
 </div>
 
 {% endblock %}
