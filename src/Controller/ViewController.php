@@ -9,6 +9,8 @@ use App\Entity\Atelier;
 use App\Entity\Salle;
 use App\Entity\Animateur;
 use Twig\Extra\Intl\IntlExtension;
+use App\Entity\Contact;
+use App\Entity\Canal;
 
 class ViewController extends AbstractController
 {
@@ -77,5 +79,39 @@ class ViewController extends AbstractController
         }
        
         return $this->render('view/viewSalles.html.twig', array('allSalles'=>$salle,'message'=>$message));
+    }
+    /**
+     * @Route("/listeContacts",name="listeContacts")
+     */
+    public function listeContacts()
+    {
+        $contact=$this->getDoctrine()->getRepository(Contact::class)->findAll();
+
+        if(!$contact)
+        {
+            $message2="Il n'y aucun contact inscrit";
+        }
+        else
+        {
+            $message2=null;
+        }
+        return $this->render('view/viewContacts.html.twig',array('lesContacts'=>$contact,'message'=>$message2));
+    }
+    /**
+     * @Route("/listeCanaux",name="listeCanaux")
+     */
+    public function listeCanaux()
+    {
+        $canal=$this->getDoctrine()->getRepository(Canal::class)->findAll();
+
+        if(!$canal)
+        {
+            $message2="Il n'y aucun contact inscrit";
+        }
+        else
+        {
+            $message2=null;
+        }
+        return $this->render('view/viewCanaux.html.twig',array('lesCanaux'=>$canal,'message'=>$message2));
     }
 }

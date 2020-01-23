@@ -15,6 +15,10 @@ use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
 use App\Entity\Animateur;
+use App\Entity\Contact;
+use App\Form\ContactType;
+use App\Entity\Canal;
+use App\Form\CanalType;
 
 class AddController extends AbstractController
 {
@@ -97,5 +101,50 @@ class AddController extends AbstractController
             return $this->redirectToRoute('listeSalles');
         }
         return $this->render('add/addSalle.html.twig', array('form'=>$form->createView()));
+    }
+    /**
+     * @Route("/addContact",name="addContact")
+     */
+    public function addContact(Request $request,$contact=null)
+    {
+        if($contact == null)
+        {
+            $contact = new Contact();
+        }
+        $form = $this->createForm(ContactType::class,$contact);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            return $this->redirectToRoute('listeContacts');
+        }
+        return $this->render('add/addContact.html.twig',array(
+            'form' => $form->createView(),
+        ));
+
+    }
+    /**
+     * @Route("/addCanal", name="addCanal")
+     */
+    public function addCanal(Request $request,$canal=null)
+    {
+        if($canal==null)
+        {
+            $canal = new Canal();
+        }
+        $form = $this->createForm(CanalType::class,$canal);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($canal);
+            $em->flush();
+            return $this->redirectToRoute('listeCanaux');
+        }
+    return $this->render('add/addCanal.html.twig',array(
+        'form' => $form->createView(),
+    ));
     }
 }
