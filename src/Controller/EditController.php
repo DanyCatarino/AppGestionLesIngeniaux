@@ -10,10 +10,7 @@ use App\Form\InstanceType;
 use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
-use App\Form\SalleType;
 use App\Entity\Animateur;
-use App\Entity\Contact;
-use App\Form\ContactType;
 
 class EditController extends AbstractController
 {
@@ -38,6 +35,7 @@ class EditController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('listeAnimateurs');
     }
+
     /**
      * @Route("/delSalle/{id}", name="delSalle")
      */
@@ -48,6 +46,11 @@ class EditController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('listeSalles');
     }
+}
+
+use App\Form\AtelierType;
+use App\Entity\Contact;
+use App\Form\ContactType;
     /**
      * @Route("/delAtelier/{id}", name="delAtelier")
      */
