@@ -20,6 +20,7 @@
             <th scope="col">Salle</th>
             <th scope="col">Animateur</th>
             <th></th>
+            <th></th>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +34,7 @@
             <td>{{instance.salle.nomSalle}}</td>
             <td>{{instance.animateur.nom}}</td>
             <td><a class="btn btn-danger" href="{{path('delInstance', {'id' : instance.id})}}">Supprimer</a></br></td>
+            <td><a class="btn btn-primary" href="">Modifier</a></br></td>
         </tr>
         {% endfor %}
       </tbody>

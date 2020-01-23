@@ -46,4 +46,36 @@ class ViewController extends AbstractController
         //redirection vers la page donnée
         return $this->render('view/viewAteliers.html.twig',array('lesAteliers'=>$atelier,'message'=>$message));
     }
+
+    /**
+    * @Route("/listeAnimateurs", name="listeAnimateurs")
+    */
+    public function listeAnimateurs()
+    {
+        $animateur = $this->getDoctrine()->getRepository(Animateur::class)->findall();
+        if(!$animateur){
+            $message="Pas d'instances !";
+        }
+        else{
+            $message = null;
+        }
+       
+        return $this->render('view/viewAnimateurs.html.twig', array('allAnimateurs'=>$animateur,'message'=>$message));
+    }
+
+    /**
+    * @Route("/listeSalles", name="listeSalles")
+    */
+    public function listeSalles()
+    {
+        $salle = $this->getDoctrine()->getRepository(Salle::class)->findall();
+        if(!$salle){
+            $message="Pas d'instances !";
+        }
+        else{
+            $message = null;
+        }
+       
+        return $this->render('view/viewSalles.html.twig', array('allSalles'=>$salle,'message'=>$message));
+    }
 }
