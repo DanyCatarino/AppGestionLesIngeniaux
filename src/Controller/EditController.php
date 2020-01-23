@@ -11,6 +11,9 @@ use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
 use App\Entity\Animateur;
+use App\Form\AtelierType;
+use App\Entity\Contact;
+use App\Form\ContactType;
 
 class EditController extends AbstractController
 {
@@ -46,11 +49,6 @@ class EditController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('listeSalles');
     }
-}
-
-use App\Form\AtelierType;
-use App\Entity\Contact;
-use App\Form\ContactType;
     /**
      * @Route("/delAtelier/{id}", name="delAtelier")
      */
@@ -60,6 +58,7 @@ use App\Form\ContactType;
         $em->flush(); 
         return $this->redirectToRoute('listeAteliers');
     }
+    
     /**
      * @Route("/delContact/{id}", name="delContact")
      */
@@ -70,6 +69,7 @@ use App\Form\ContactType;
         return $this->redirectToRoute('listeContacts');
 
     }
+
     /**
      * @Route("/delCanal/{id}", name="delCanal")
      */

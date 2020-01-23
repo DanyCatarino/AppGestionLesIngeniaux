@@ -2,39 +2,49 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper { margin: 2em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+    .error {color: red}
 </style>
+
+<div class="jumbotron text-center p-4">
+    <h1 class="display-4">Liste des ateliers</h1>
+</div>
 <div class="example-wrapper">
-    <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Gestion Des Ateliers</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn btn-primary text-center" href="{{path('addAtelier')}}">Ajouter un atelier</a>
+            </div>
+        </div><br/>
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Prix</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for atelier in lesAteliers%}
+                        <tr>
+                            <th scope="row">{{atelier.id}}</th>
+                            <td>{{atelier.description}}</td>
+                            <td>{{atelier.statut}}</td>
+                            <td>{{atelier.type}}</td>
+                            <td>{{atelier.prix}}</td>
+                            <td><a class="btn btn-danger" href="{{path('delAtelier',{'id': atelier.id})}}">Supprimer</a></td>
+                            <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col text-center">
-        <a href="{{path('addAtelier')}}" type="button" class="btn btn-link">Ajouter un Atelier</button></a>
-    </div>
-    <div class="table-responsive-sm">
-    <table class="table table-bordered">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Description</th>
-        <th scope="col">Statut</th>
-        <th scope="col">Type</th>
-        <th scope="col">Prix</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    {%for atelier in lesAteliers%}
-        <th scope="row">{{atelier.id}}</th>
-        <td>{{atelier.description}}</td>
-        <td>{{atelier.statut}}</td>
-        <td>{{atelier.type}}</td>
-        <td>{{atelier.prix}}</td>
-        <td><a class="btn btn-danger" href="{{path('delAtelier',{'id': atelier.id})}}">Supprimer</a></td>
-    </tr>
-    </div>
-    {%endfor%}
 </div>
 {% endblock %}
