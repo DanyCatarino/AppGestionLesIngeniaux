@@ -67,7 +67,7 @@ class Instance
 
         return $this;
     }
-
+    
     /**
      * @return Collection|Inscription[]
      */

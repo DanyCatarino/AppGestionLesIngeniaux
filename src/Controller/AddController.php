@@ -87,8 +87,7 @@ class AddController extends AbstractController
     /**
      * @Route("/addSalle", name="addSalle")
      */
-    public function addSalle(Request $request, $salle = null)
-    {
+    public function addSalle(Request $request, $salle = null){
         if($salle == null){
             $salle = new Salle();
         }
