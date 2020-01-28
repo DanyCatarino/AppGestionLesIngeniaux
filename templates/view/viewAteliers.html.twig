@@ -27,7 +27,6 @@
                         <th scope="col">Statut</th>
                         <th scope="col">Type</th>
                         <th scope="col">Prix</th>
-                        <th scope="col">Public</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -41,7 +40,6 @@
                             <td>{{atelier.statut}}</td>
                             <td>{{atelier.type}}</td>
                             <td>{{atelier.prix}}</td>
-                            <td>{{atelier.public}}</td>
                             <td><a class="btn btn-danger" href="{{path('delAtelier',{'id': atelier.id})}}">Supprimer</a></td>
                             <td><a class="btn btn-primary" href="{{path('editAtelier',{'id': atelier.id})}}">Modifier</a></br></td>
                         </tr>
