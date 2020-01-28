@@ -36,7 +36,7 @@
               <td>{{animateur.nom}}</td>
               <td>{{animateur.prenom}}</td>
               <td><a class="btn btn-danger" href="{{path('delAnimateur', {'id' : animateur.id})}}">Supprimer</a></br></td>
-              <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+              <td><a class="btn btn-primary" href="{{path('editAnimateur',{'id' :animateur.id})}}">Modifier</a></br></td>
           </tr>
           {% endfor %}
         </tbody>

@@ -14,7 +14,6 @@ class InstanceType extends AbstractType
     {
         $builder
             ->add('dateInstance')
-            ->add('public')
             ->add('atelier')
             ->add('salle')
             ->add('animateur')

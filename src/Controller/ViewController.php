@@ -11,6 +11,7 @@ use App\Entity\Animateur;
 use Twig\Extra\Intl\IntlExtension;
 use App\Entity\Contact;
 use App\Entity\Canal;
+
 class ViewController extends AbstractController
 {
 

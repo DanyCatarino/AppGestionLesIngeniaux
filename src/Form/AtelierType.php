@@ -16,10 +16,48 @@ class AtelierType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('public')   
-            ->add('statut',ChoiceType::class,['choices'=>['En cours'=>true,'Terminé'=>null]],)
-            ->add('type')   
+            ->add('statut',ChoiceType::class, [
+                'choices'=>[
+                    'Disponible'=>"Disponible",
+                    'Brouillion'=>"Brouillon",
+                    'Archivé'=>"Archivé"
+                ],
+                'choice_label' => function ($choice, $key, $value) 
+                {
+                    if ("Disponible" === $choice) {
+                        return 'Disponible';
+                    }
+                    if("Brouillon" ===$choice){
+                        return 'Brouillon';
+                    }
+                    if("Archivé" ===$choice){
+                        return 'Archivé';
+                    }
+                    return strtoupper($key)
+                ;}
+                ])
+            ->add('type',ChoiceType::class,[
+                    'choices'=>[
+                            'Atelier Hebomadaire'=>"Atelier Hebdomadaire",
+                            'Atelier Ponctuel'=>"Atelier Ponctuel",
+                            'Stages Vacances'=>"Stages Vacances"
+                    ],
+                    'choice_label'=> function($choice, $key,$value)
+                    {
+                        if ("Atelier Hebdomadaire" === $choice) {
+                            return 'Atelier Hebdomadaire';
+                        }
+                        if("Atelier Ponctuel" === $choice){
+                            return 'Atelier Ponctuel';
+                        }
+                        if("Stages Vacances" === $choice){
+                            return 'Stages Vacances';
+                        }
+                        return strtoupper($key)
+                    ;}
+                ])   
             ->add('prix',MoneyType::class)
+            ->add('public')
             ->add('Ajouter',SubmitType::class)
         ;
     }
