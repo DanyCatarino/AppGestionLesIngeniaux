@@ -30,13 +30,13 @@
             <tr>
               <th scope="row">{{instance.id}}</th>
               <td>{{instance.dateInstance|format_datetime(locale='fr')}}</td>
-              <td>{{instance.public}}</td>
+              <td>{{instance.atelier.public}}</td>
               <td>{{instance.atelier.id}}</td>
               <td>{{instance.atelier.description}}</td>
               <td>{{instance.salle.nomSalle}}</td>
               <td>{{instance.animateur.nom}}</td>
               <td><a class="btn btn-danger" href="{{path('delInstance', {'id' : instance.id})}}">Supprimer</a></br></td>
-              <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+              <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>
             </tr>
           {% endfor %}
         </tbody>

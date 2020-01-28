@@ -20,7 +20,7 @@ class ContactType extends AbstractType
             ->add('mail',EmailType::class,['help'=>'Entrez une adresse@mail',])
             ->add('dateNaissance',DateType::class)
             ->add('telephone',TelType::class)
-            ->add('Créer un Contact',SubmitType::class)
+            ->add('Creer un Contact',SubmitType::class)
         ;
     }
 
