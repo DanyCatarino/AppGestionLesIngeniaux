@@ -24,11 +24,6 @@ class Instance
     private $dateInstance;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $public;
-
-    /**
     * @ORM\OneToMany(targetEntity="Inscription", mappedBy="instance")
     **/
     private $inscription;
@@ -72,19 +67,7 @@ class Instance
 
         return $this;
     }
-
-    public function getPublic(): ?string
-    {
-        return $this->public;
-    }
-
-    public function setPublic(string $public): self
-    {
-        $this->public = $public;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Inscription[]
      */

@@ -48,6 +48,11 @@ class Atelier
     **/
     private $ageAtelier;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $public;
+
     public function __toString() {
         return (string) $this->id;
     }
@@ -168,6 +173,18 @@ class Atelier
                 $ageAtelier->setAtelier(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPublic(): ?string
+    {
+        return $this->public;
+    }
+
+    public function setPublic(string $public): self
+    {
+        $this->public = $public;
 
         return $this;
     }

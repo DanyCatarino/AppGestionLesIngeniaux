@@ -47,4 +47,8 @@ class AtelierRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getClasseDage(int $age_id,string $classe_age)
+    {
+        
+    }
 }

@@ -31,7 +31,7 @@
                 <th scope="row">{{salle.id}}</th>
                 <td>{{salle.nomSalle}}</td>
                 <td><a class="btn btn-danger" href="{{path('delSalle', {'id' : salle.id})}}">Supprimer</a></br></td>
-                <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+                <td><a class="btn btn-primary" href="{{path('editSalle',{'id' :salle.id})}}">Modifier</a></br></td>
             </tr>
             {% endfor %}
           </tbody>
