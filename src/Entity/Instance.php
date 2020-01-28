@@ -24,11 +24,6 @@ class Instance
     private $dateInstance;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $public;
-
-    /**
     * @ORM\OneToMany(targetEntity="Inscription", mappedBy="instance")
     **/
     private $inscription;
@@ -69,18 +64,6 @@ class Instance
     public function setDateInstance(\DateTimeInterface $dateInstance): self
     {
         $this->dateInstance = $dateInstance;
-
-        return $this;
-    }
-
-    public function getPublic(): ?string
-    {
-        return $this->public;
-    }
-
-    public function setPublic(string $public): self
-    {
-        $this->public = $public;
 
         return $this;
     }

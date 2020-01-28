@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="jumbotron text-center p-4">
-  <h1 class="display-4">Liste des instances</h1>
+  <h1 class="display-4">Planification</h1>
 </div>
 <div class="container">
     <div class="row">
@@ -30,7 +30,7 @@
             <tr>
               <th scope="row">{{instance.id}}</th>
               <td>{{instance.dateInstance|format_datetime(locale='fr')}}</td>
-              <td>{{instance.public}}</td>
+              <td>{{instance.atelier.public}}</td>
               <td>{{instance.atelier.id}}</td>
               <td>{{instance.atelier.description}}</td>
               <td>{{instance.salle.nomSalle}}</td>

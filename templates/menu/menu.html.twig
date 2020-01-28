@@ -2,7 +2,7 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 3em auto; max-width: 600px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 3em auto; max-width: 1100px; width: 95%; }
     .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
     .error {color: red}
     .legende { text-align: center }
@@ -12,45 +12,63 @@
 </div>
 <div class="example-wrapper">
     <div class="row">
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-        <img src="{{asset('calendar.png')}}" width="100" height="100" alt="Calendar"><div class="legende">Calendrier</div>
-        </a>
-    </div><br/>
+        <div class="col text-center">
+          <p class="lead text-center">Outils</p><br/>
+          <div class="row">
+            <div class="col-md-4">
+                <a href="{{path('listeInstances')}}" class="thumbnail">
+                    <img src="{{asset('instance.png')}}" width="100" height="100" alt="Instances"><div class="legende">PLANIFICATION</div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{{asset('calendar.png')}}" width="100" height="100" alt="Calendar"><div class="legende">CALENDRIER</div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="" class="thumbnail">
+                    <img src="{{asset('inscription.png')}}" width="100" height="100" alt="Salle"><div class="legende">INSCRIPTION</div>
+                </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col text-center">
+          <p class="lead text-center">Gestion de la base de données</p><br/>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{path('listeAteliers')}}" class="thumbnail">
+                        <img src="{{asset('atelier.png')}}" width="100" height="100" alt="Ateliers"><div class="legende">ATELIER</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{path('listeContacts')}}" class="thumbnail">
+                        <img src="{{asset('contact.png')}}" width="100" height="100" alt="Contact"><div class="legende">CONTACT</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{path('listeCanaux')}}" class="thumbnail">
+                        <img src="{{asset('canal.png')}}" width="100" height="100" alt="Canaux"><div class="legende">CANAL</div><br/>
+                    </a>
+                </div>
+            </div>
 
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeAteliers')}}" class="thumbnail">
-        <img src="{{asset('atelier.png')}}" width="100" height="100" alt="Ateliers"><div class="legende">Ateliers</div>
-        </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeInstances')}}" class="thumbnail">
-        <img src="{{asset('instance.png')}}" width="100" height="100" alt="Instances"><div class="legende">Instances</div>
-        </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeContacts')}}" class="thumbnail">
-        <img src="{{asset('contact.png')}}" width="100" height="100" alt="Contact"><div class="legende">Contact</div></div>
-    <br/><br/>
-
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeCanaux')}}" class="thumbnail">
-        <img src="{{asset('canal.png')}}" width="100" height="100" alt="Canaux"><div class="legende">Canaux</div>
-        </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeSalles')}}" class="thumbnail">
-        <img src="{{asset('salle.png')}}" width="100" height="100" alt="Salle"><div class="legende">Salle</div>
-        </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-        <a href="{{path('listeAnimateurs')}}" class="thumbnail">
-        <img src="{{asset('animateur.png')}}" width="100" height="100" alt="Salle"><div class="legende">Animateur</div>
-        </a>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{path('listeSalles')}}" class="thumbnail">
+                        <img src="{{asset('salle.png')}}" width="100" height="100" alt="Salle"><div class="legende">SALLE</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{path('listeAnimateurs')}}" class="thumbnail">
+                        <img src="{{asset('animateur.png')}}" width="100" height="100" alt="Salle"><div class="legende">ANIMATEUR</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

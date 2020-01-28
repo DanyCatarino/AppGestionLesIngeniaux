@@ -16,6 +16,7 @@ class AtelierType extends AbstractType
     {
         $builder
             ->add('description')
+            ->add('public')   
             ->add('statut',ChoiceType::class,['choices'=>['En cours'=>true,'Terminé'=>null]],)
             ->add('type')   
             ->add('prix',MoneyType::class)
