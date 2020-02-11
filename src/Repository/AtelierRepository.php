@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Atelier;
+use App\Entity\AgeAtelier;
+use App\Entity\Age;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Atelier|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,8 +50,15 @@ class AtelierRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function getClasseDage(int $age_id,string $classe_age)
+
+    function findByDispoBrouillonAtelier()
     {
-        
+        return $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from('App\Entity\Atelier', 'a')
+            ->where('a.statut IN (\'Brouillon\', \'Disponible\')')
+            ->getQuery()
+            ->getResult();
+        ;
     }
 }

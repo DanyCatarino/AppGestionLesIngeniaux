@@ -17,10 +17,13 @@ class ContactType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mail',EmailType::class,['help'=>'Entrez une adresse@mail',])
+            ->add('mail',EmailType::class)
             ->add('dateNaissance',DateType::class)
             ->add('telephone',TelType::class)
-            ->add('Creer un Contact',SubmitType::class)
+            ->add('Ajouter le contact', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block'],
+            ])
         ;
     }
 

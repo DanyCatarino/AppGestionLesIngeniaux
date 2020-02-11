@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="jumbotron text-center p-4">
+  <h1 class="display-4">Liste des instances archivés</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-primary text-center" href="{{path('listeInstances')}}">Planification </a>
+        </div>
+    </div><br/>
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Public</th>
+            <th scope="col">Atelier</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Animateur</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instance in lesInstancesArchive %}
+            <tr>
+              <th scope="row">{{instance.id}}</th>
+              <td>{{instance.atelier.public}}</td>
+              <td>{{instance.atelier.titre}}</td>
+              <td>{{instance.statut}}</td>
+              <td>{{instance.animateur.nom}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </div>
+    </table>
+  </div>
+{% endblock %} 

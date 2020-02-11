@@ -24,9 +24,9 @@ class Salle
     private $nomSalle;
 
     /**
-    * @ORM\OneToMany(targetEntity="Instance", mappedBy="Salle")
+    * @ORM\OneToMany(targetEntity="Seance", mappedBy="Salle")
     **/
-    private $instance;
+    private $seance;
 
     public function __toString() {
         return (string) $this->id;

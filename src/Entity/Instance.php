@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,11 +20,6 @@ class Instance
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $dateInstance;
-
-    /**
     * @ORM\OneToMany(targetEntity="Inscription", mappedBy="instance")
     **/
     private $inscription;
@@ -35,37 +31,30 @@ class Instance
     private $atelier;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Salle", inversedBy="instance")
-    * @ORM\JoinColumn(name="salle_id", referencedColumnName="id", nullable=true)
-    **/
-    private $salle;
-
-    /**
     * @ORM\ManyToOne(targetEntity="Animateur", inversedBy="instance")
     * @ORM\JoinColumn(name="animateur_id", referencedColumnName="id", nullable=true)
     **/
     private $animateur;
 
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $statut;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Seance", mappedBy="instance")
+     */
+    private $seance;
+
     public function __construct()
     {
         $this->inscription = new ArrayCollection();
+        $this->seance = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDateInstance(): ?\DateTimeInterface
-    {
-        return $this->dateInstance;
-    }
-
-    public function setDateInstance(\DateTimeInterface $dateInstance): self
-    {
-        $this->dateInstance = $dateInstance;
-
-        return $this;
     }
 
     /**
@@ -111,18 +100,6 @@ class Instance
         return $this;
     }
 
-    public function getSalle(): ?Salle
-    {
-        return $this->salle;
-    }
-
-    public function setSalle(?Salle $salle): self
-    {
-        $this->salle = $salle;
-
-        return $this;
-    }
-
     public function getAnimateur(): ?Animateur
     {
         return $this->animateur;
@@ -131,6 +108,49 @@ class Instance
     public function setAnimateur(?Animateur $animateur): self
     {
         $this->animateur = $animateur;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Seance[]
+     */
+    public function getSeance(): Collection
+    {
+        return $this->seance;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seance->contains($seance)) {
+            $this->seance[] = $seance;
+            $seance->setInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seance->contains($seance)) {
+            $this->seance->removeElement($seance);
+            // set the owning side to null (unless already changed)
+            if ($seance->getInstance() === $this) {
+                $seance->setInstance(null);
+            }
+        }
 
         return $this;
     }

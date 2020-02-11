@@ -7,10 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\SalleRepository;
 use App\Form\AnimateurType;
 use App\Form\AtelierType;
 use App\Form\InstanceType;
 use App\Form\SalleType;
+use App\Form\SeanceType;
 use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
@@ -18,6 +20,7 @@ use App\Entity\Animateur;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Entity\Canal;
+use App\Entity\Seance;
 use App\Form\CanalType;
 
 class AddController extends AbstractController
@@ -26,9 +29,9 @@ class AddController extends AbstractController
      * @Route("/addInstance", name="addInstance")
      */
     public function addInstance(Request $request, $instance = null){
-        if($instance == null){
-            $instance = new Instance();
-        }
+
+        $instance = new Instance();
+
         $form = $this->createForm(InstanceType::class, $instance);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -36,9 +39,33 @@ class AddController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($instance);
             $em->flush();
-            return $this->redirectToRoute('listeInstances');
+
+            return $this->redirectToRoute('addSeance', array('id' => $instance->getId()));
         }
         return $this->render('add/addInstance.html.twig', array('form'=>$form->createView()));
+    }
+
+     /**
+     * @Route("/addSeance", name="addSeance")
+     */
+    public function addSeance(Request $request, $seance = null){
+
+        $seance = new Seance();
+
+        $form = $this->createForm(SeanceType::class, $seance);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            var_dump($form->getData());
+            $salle = $em->getRepository(Salle::class)->findOne($form->getData()->salle);
+            $seance->setSalle($salle);
+            $em->persist($seance);
+            $em->flush();
+
+            return $this->redirectToRoute('listeInstances');
+        }
+        return $this->render('add/addSeance.html.twig', array('form'=>$form->createView()));
     }
 
     /**
