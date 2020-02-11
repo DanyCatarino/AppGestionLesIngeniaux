@@ -32,12 +32,6 @@ class Contact
      * @ORM\Column(type="string", length=100)
      */
     private $mail;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateNaissance;
-
     /**
      * @ORM\Column(type="string", length=15)
      */
@@ -47,6 +41,21 @@ class Contact
     * @ORM\OneToMany(targetEntity="Inscrit", mappedBy="contact")
     **/
     private $inscrit;
+
+    /**
+     * @ORM\Column(type="string", length=120, nullable=true)
+     */
+    private $Notes;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $Provenance;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $Segment;
 
     public function __construct()
     {
@@ -93,19 +102,6 @@ class Contact
 
         return $this;
     }
-
-    public function getDateNaissance(): ?\DateTimeInterface
-    {
-        return $this->dateNaissance;
-    }
-
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
-    {
-        $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
-
     public function getTelephone(): ?string
     {
         return $this->telephone;
@@ -145,6 +141,42 @@ class Contact
                 $inscrit->setContact(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->Notes;
+    }
+
+    public function setNotes(?string $Notes): self
+    {
+        $this->Notes = $Notes;
+
+        return $this;
+    }
+
+    public function getProvenance(): ?string
+    {
+        return $this->Provenance;
+    }
+
+    public function setProvenance(string $Provenance): self
+    {
+        $this->Provenance = $Provenance;
+
+        return $this;
+    }
+
+    public function getSegment(): ?string
+    {
+        return $this->Segment;
+    }
+
+    public function setSegment(string $Segment): self
+    {
+        $this->Segment = $Segment;
 
         return $this;
     }

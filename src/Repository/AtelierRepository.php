@@ -21,7 +21,12 @@ class AtelierRepository extends ServiceEntityRepository
 
     // /**
     //  * @return Atelier[] Returns an array of Atelier objects
-    //  */
+    // */
+
+    /**
+      * @return Atelier[] Returns an array of Formation objects
+     */
+    /*
     /*
     public function findByExampleField($value)
     {
@@ -47,8 +52,23 @@ class AtelierRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function getClasseDage(int $age_id,string $classe_age)
+
+
+    /*
+    public function findByClasseAge(Age $classeAge,Age $id)
     {
-        
+       $qb = $this->createQueryBuilder('atelier');
+       $qb->Join('atelier.ageatelier','ag')
+       ->Join('age.ageatelier','a')
+       //->addSelect('ag')
+       //->addSelect('a')
+       ->where($qb->expr()->eq('ag.ageatelier'))
+       ->andWhere($qb->expr()->eq('a.age'))
+       ->andwhere('atelier.id = ?6')
+       ->setParameters('ag',$classeAge)
+       ->setParameters('a', $id);
+
+       return $qb->getQuery()->getResult();
     }
+    */
 }

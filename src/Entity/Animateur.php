@@ -33,6 +33,26 @@ class Animateur
     **/
     private $instance;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $emailContact;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $TelephoneContact;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Notes;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $documentationDisponible;
+
     public function __toString() {
         return (string) $this->id;
     }
@@ -98,6 +118,54 @@ class Animateur
                 $instance->setAnimateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmailContact(): ?string
+    {
+        return $this->emailContact;
+    }
+
+    public function setEmailContact(string $emailContact): self
+    {
+        $this->emailContact = $emailContact;
+
+        return $this;
+    }
+
+    public function getTelephoneContact(): ?string
+    {
+        return $this->TelephoneContact;
+    }
+
+    public function setTelephoneContact(string $TelephoneContact): self
+    {
+        $this->TelephoneContact = $TelephoneContact;
+
+        return $this;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->Notes;
+    }
+
+    public function setNotes(?string $Notes): self
+    {
+        $this->Notes = $Notes;
+
+        return $this;
+    }
+
+    public function getDocumentationDisponible(): ?string
+    {
+        return $this->documentationDisponible;
+    }
+
+    public function setDocumentationDisponible(?string $documentationDisponible): self
+    {
+        $this->documentationDisponible = $documentationDisponible;
 
         return $this;
     }

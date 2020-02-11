@@ -27,23 +27,27 @@
                         <th scope="col">Type</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Public</th>
+                        <th scope="col">Age</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {%for atelier in lesAteliers%}
+                    {% for atelier in lesAteliers %}
                         <tr>
                             <th scope="row">{{atelier.id}}</th>
                             <td>{{atelier.description}}</td>
                             <td>{{atelier.statut}}</td>
                             <td>{{atelier.type}}</td>
-                            <td>{{atelier.prix}}</td>
-                            <td>{{atelier.public}}</td>
+                            <td>{{atelier.prix}}</td>  
+                            <td>{{atelier.age|join(', ')}}</td> 
+                            <td></td>
+                            <td></td>
                             <td><a class="btn btn-danger" href="{{path('delAtelier',{'id': atelier.id})}}">Supprimer</a></td>
                             <td><a class="btn btn-primary" href="{{path('editAtelier',{'id': atelier.id})}}">Modifier</a></br></td>
                         </tr>
-                    {%endfor%}
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

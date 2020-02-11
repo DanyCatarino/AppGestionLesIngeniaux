@@ -19,32 +19,20 @@ class InscritRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscrit::class);
     }
 
-    // /**
-    //  * @return Inscrit[] Returns an array of Inscrit objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Inscrit[] Returns an array of Inscrit objects
+      */
+    public function findOneByNomPrenom()
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $entityManager = $this->getEntityManager();
 
-    /*
-    public function findOneBySomeField($value): ?Inscrit
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    $query = $entityManager->createQuery(
+        'SELECT i, inscription
+        FROM App\Entity\Inscrit i
+        INNER JOIN i.inscription inscription
+        WHERE i.id = :id'
+    )->setParameter('id', $inscrit);
+
+    return $query->getOneOrNullResult();
     }
-    */
 }

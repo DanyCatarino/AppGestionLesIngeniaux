@@ -6,6 +6,9 @@ use App\Entity\Salle;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type as SFType;
 
 class SalleType extends AbstractType
@@ -14,6 +17,11 @@ class SalleType extends AbstractType
     {
         $builder
             ->add('nomSalle')
+            ->add('Adresse',TextType::class)
+            ->add('capaciteSalle',TextType::class)
+            ->add('NomGestionnaireSalle',TextType::class)
+            ->add('EmailGestionnaireSalle',EmailType::class)
+            ->add('TelephoneGestionnaireSalle',TelType::class)
             ->add('Ajouter',SFType\SubmitType::class)
         ;
     }

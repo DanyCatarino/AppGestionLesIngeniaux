@@ -42,16 +42,15 @@ class Atelier
     * @ORM\OneToMany(targetEntity="Instance", mappedBy="Atelier")
     **/
     private $instance;
-
-    /**
-    * @ORM\OneToMany(targetEntity="AgeAtelier", mappedBy="Atelier")
-    **/
-    private $ageAtelier;
-
     /**
      * @ORM\Column(type="string", length=50)
      */
     private $public;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Age", inversedBy="ateliers")
+     */
+    private $age;
 
     public function __toString() {
         return (string) $this->id;
@@ -60,7 +59,7 @@ class Atelier
     public function __construct()
     {
         $this->instance = new ArrayCollection();
-        $this->ageAtelier = new ArrayCollection();
+        $this->age = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -146,37 +145,6 @@ class Atelier
         return $this;
     }
 
-    /**
-     * @return Collection|AgeAtelier[]
-     */
-    public function getAgeAtelier(): Collection
-    {
-        return $this->ageAtelier;
-    }
-
-    public function addAgeAtelier(AgeAtelier $ageAtelier): self
-    {
-        if (!$this->ageAtelier->contains($ageAtelier)) {
-            $this->ageAtelier[] = $ageAtelier;
-            $ageAtelier->setAtelier($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAgeAtelier(AgeAtelier $ageAtelier): self
-    {
-        if ($this->ageAtelier->contains($ageAtelier)) {
-            $this->ageAtelier->removeElement($ageAtelier);
-            // set the owning side to null (unless already changed)
-            if ($ageAtelier->getAtelier() === $this) {
-                $ageAtelier->setAtelier(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getPublic(): ?string
     {
         return $this->public;
@@ -185,6 +153,34 @@ class Atelier
     public function setPublic(string $public): self
     {
         $this->public = $public;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Age[]
+     */
+    public function getAge(): Collection
+    {
+        return $this->age;
+    }
+
+    public function addAge(Age $age): self
+    {
+        if (!$this->age->contains($age)) {
+            $this->age[] = $age;
+            $age->setAge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAge(Age $age): self
+    {
+        if ($this->age->contains($age)) {
+            $this->age->removeElement($age);
+            $age->setAge(null);
+        }
 
         return $this;
     }

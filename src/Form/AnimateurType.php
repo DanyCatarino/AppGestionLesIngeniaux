@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type as SFType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AnimateurType extends AbstractType
 {
@@ -14,7 +17,25 @@ class AnimateurType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prenom')
+            ->add('prenom',TextType::class)
+            ->add('emailContact',TextType::class)
+            ->add('TelephoneContact',TelType::class)
+            ->add('documentationDisponible',ChoiceType::class,[
+                'choices'=>[
+                    'Assurance'=>"Assurance",
+                    'Contrat'=>"Contrat"
+                ],
+                'choice_label' => function ($choice, $key, $value) 
+                {
+                    if ("Assurance" === $choice) {
+                        return 'Assurance';
+                    }
+                    if("Contrat" ===$choice){
+                        return 'Contrat';
+                    }
+                    return strtoupper($key)
+                ;}
+                ])
             ->add('Ajouter',SFType\SubmitType::class)
         ;
     }

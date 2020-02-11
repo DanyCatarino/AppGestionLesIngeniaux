@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
@@ -11,6 +13,11 @@ use App\Entity\Animateur;
 use Twig\Extra\Intl\IntlExtension;
 use App\Entity\Contact;
 use App\Entity\Canal;
+use App\Entity\Age;
+use App\Entity\Inscrit;
+use App\Form\InscritType;
+
+
 class ViewController extends AbstractController
 {
 
@@ -34,8 +41,8 @@ class ViewController extends AbstractController
      * @Route("/listeAteliers",name="listeAteliers")
      */
     public function listeAteliers(){
-
-        $atelier= $this->getDoctrine()->getRepository(Atelier::class)->findall(); //retourne toutes les ateliers dans la collection
+        
+        $atelier= $this->getDoctrine()->getRepository(Atelier::class)->findall();//retourne toutes les ateliers de la collection
 
          if(!$atelier){
              $message="Il n'y a aucun atelier  disponible"; //pas de atelier créer et affichage d'un message 
@@ -112,5 +119,22 @@ class ViewController extends AbstractController
             $message2=null;
         }
         return $this->render('view/viewCanaux.html.twig',array('lesCanaux'=>$canal,'message'=>$message2));
+    }
+    /**
+     * @Route("/selectInscrit",name="selectInscrit")
+     */
+    public function selectInscrit()
+    {
+        $inscrit=$this->getDoctrine()->getRepository(Inscrit::class)->findAll();
+
+        if(!$inscrit)
+        {
+            $message2="Il n'y aucun inscrit";
+        }
+        else
+        {
+            $message2=null;
+        }
+        return $this->render('view/selectInscrit.html.twig',array('lesInscrits'=>$inscrit,'message'=>$message2));
     }
 }

@@ -24,15 +24,17 @@ class Age
     private $classeAge;
 
     /**
-    * @ORM\OneToMany(targetEntity="AgeAtelier", mappedBy="Age")
-    **/
-    private $ageAtelier;
+     * @ORM\ManyToMany(targetEntity="App\Entity\Atelier", mappedBy="age")
+     */
+    private $ateliers;
+    public function __toString() {
 
+    return (string) $this->classeAge;
+    }
     public function __construct()
     {
-        $this->ageAtelier = new ArrayCollection();
+        $this->ateliers = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -52,33 +54,29 @@ class Age
     }
 
     /**
-     * @return Collection|AgeAtelier[]
+     * @return Collection|Atelier[]
      */
-    public function getAgeAtelier(): Collection
+    public function getAteliers(): Collection
     {
-        return $this->ageAtelier;
+        return $this->ateliers;
     }
 
-    public function addAgeAtelier(AgeAtelier $ageAtelier): self
+    public function addAtelier(Atelier $atelier): self
     {
-        if (!$this->ageAtelier->contains($ageAtelier)) {
-            $this->ageAtelier[] = $ageAtelier;
-            $ageAtelier->setAge($this);
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers[] = $atelier;
+            $atelier->addAge($this);
         }
 
         return $this;
     }
 
-    public function removeAgeAtelier(AgeAtelier $ageAtelier): self
+    public function removeAtelier(Atelier $atelier): self
     {
-        if ($this->ageAtelier->contains($ageAtelier)) {
-            $this->ageAtelier->removeElement($ageAtelier);
-            // set the owning side to null (unless already changed)
-            if ($ageAtelier->getAge() === $this) {
-                $ageAtelier->setAge(null);
-            }
+        if ($this->ateliers->contains($atelier)) {
+            $this->ateliers->removeElement($atelier);
+            $atelier->removeAge($this);
         }
-
         return $this;
     }
 }

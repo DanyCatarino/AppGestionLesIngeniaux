@@ -2,13 +2,13 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 500px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 <div class="jumbotron text-center p-4">
     <h1 class="display-4">Liste des salles</h1>
 </div>
-<div class="example-wrapper">
+<div class="example-wrapper code">
   <div class="container">
       <div class="row">
           <div class="col text-center">
@@ -19,10 +19,15 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Nom</th>
-                    <th></th>
-                <th></th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Capacite</th>
+                <th scope="col">Gestionnaire Salle</th>
+                <th scope="col">Email Gestionnaire</th>
+                <th scope="col">Telephone Gestionnaire</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                 <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +35,11 @@
             <tr>
                 <th scope="row">{{salle.id}}</th>
                 <td>{{salle.nomSalle}}</td>
+                <td>{{salle.Adresse}}</td>
+                <td>{{salle.capaciteSalle}}</td>
+                <td>{{salle.NomGestionnaireSalle}}</td>
+                <td>{{salle.EmailGestionnaireSalle}}</td>
+                <td>{{salle.TelephoneGestionnaireSalle}}</td>
                 <td><a class="btn btn-danger" href="{{path('delSalle', {'id' : salle.id})}}">Supprimer</a></br></td>
                 <td><a class="btn btn-primary" href="{{path('editSalle',{'id' :salle.id})}}">Modifier</a></br></td>
             </tr>

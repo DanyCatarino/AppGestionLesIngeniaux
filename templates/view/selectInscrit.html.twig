@@ -1,0 +1,34 @@
+{% extends 'base.html.twig'  %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 2em auto; max-width: 400px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+    .error {color: red}
+</style>
+<div class="jumbotron text-center p-4">
+    <h1 class="display-4">Veuillez Selectionner un inscrit</h1>
+    </div>
+<div class="example-wrapper">
+{% for inscrit in lesInscrits %}
+<form action ="{{path('addInscription',{id: inscrit.id})}}" method="POST">
+    <div class="input-group">
+    <select class="browser-default custom-select" id="inputGroupSelect04">
+         <option>{{inscrit.nom}} {{inscrit.prenom}}</option>
+    </select>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Ajouter Inscription</button>
+        </div>
+    </div>
+</form>
+{% endfor %}
+ {# <select class="custom-select" size="15">
+     {% for inscrit in lesInscrits %}
+        <option>{{inscrit.nom}} {{inscrit.prenom}}</option>
+         </select> 
+    <form action ="{{path('addInscription',{id: inscrit.id})}}" method="POST">
+     <a href="{{path('addInscription', {id: inscrit.id})}}"class="btn btn-primary">Ajouter Inscription</a> 
+{% endfor %} #}
+{# </div>
+</div> #}
+{% endblock %} 

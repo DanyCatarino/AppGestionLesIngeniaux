@@ -45,7 +45,10 @@ class Instance
     * @ORM\JoinColumn(name="animateur_id", referencedColumnName="id", nullable=true)
     **/
     private $animateur;
-
+    public function __tostring()
+    {
+        return (string) $this->id;
+    }
     public function __construct()
     {
         $this->inscription = new ArrayCollection();
