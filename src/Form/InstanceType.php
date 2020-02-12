@@ -31,7 +31,7 @@ class InstanceType extends AbstractType
         $builder
             ->add('atelier', EntityType::class, [
                 'class' => Atelier::class,
-                'placeholde:r' => "Selectionner l'atelier",
+                'placeholder' => "Selectionner l'atelier",
                 'query_builder' => function (AtelierRepository $qb)
                 {
                     return $qb->createQueryBuilder('a')->orderBy('a.titre', 'ASC');

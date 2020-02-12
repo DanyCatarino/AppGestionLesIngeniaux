@@ -9,9 +9,7 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-4 text-center">
-          <a class="btn btn-primary text-center" href="{{path('addInstance')}}">Ajouter une instance</a>
-        </div>
-        <div class="col-md-4 text-center">
+          <a class="btn btn-primary" href="{{path('addInstance')}}">Ajouter une instance</a>
           <a class="btn btn-secondary" href="{{path('listeInstancesArchiver')}}">Archive</a>
         </div>
     </div><br/>
@@ -20,11 +18,9 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Date</th>
             <th scope="col">Public</th>
             <th scope="col">Atelier</th>
             <th scope="col">Statut</th>
-            <th scope="col">Salle</th>
             <th scope="col">Animateur</th>
             <th></th>
             <th></th>
@@ -34,11 +30,9 @@
           {% for instance in allInstances %}
             <tr>
               <th scope="row">{{instance.id}}</th>
-              <td>{#{{instance.dateInstance|format_datetime(locale='fr')}}#}</td>
               <td>{{instance.atelier.public}}</td>
               <td>{{instance.atelier.titre}}</td>              
               <td>{{instance.statut}}</td>
-              <td>{#{{instance.seance.salle}}#}</td>
               <td>{{instance.animateur.nom}}</td>
               <td><a class="btn btn-danger" href="{{path('archiverInstance',{'id': instance.id})}}">Archiver</a></br></td>
               <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>

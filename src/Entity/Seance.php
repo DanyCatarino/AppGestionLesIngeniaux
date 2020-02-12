@@ -28,10 +28,15 @@ class Seance
     private $instance;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Salle", inversedBy="seance")
-    * @ORM\JoinColumn(name="salle_id", referencedColumnName="id", nullable=true)
-    **/
+     * @ORM\ManyToOne(targetEntity="App\Entity\Salle", inversedBy="seance")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $salle;
+
+    public function __toString(){
+
+        return (string) $this->id;
+    }
 
     public function getId(): ?int
     {
@@ -62,12 +67,12 @@ class Seance
         return $this;
     }
 
-    public function getSalle(): ?string
+    public function getSalle(): ?Salle
     {
         return $this->salle;
     }
 
-    public function setSalle(string $salle): self
+    public function setSalle(?Salle $salle): self
     {
         $this->salle = $salle;
 

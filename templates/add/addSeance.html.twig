@@ -10,6 +10,12 @@
     <h1 class="display-4">Ajouter les séances de cet instance</h1>
 </div>
 <div class="example-wrapper">
-    {{form(form)}}
+    Nombre de séances : {{instance.atelier.nbSeances}}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(form) }}   
 </div>
 {% endblock %} 

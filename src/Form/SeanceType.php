@@ -24,14 +24,7 @@ class SeanceType extends AbstractType
             ->add('salle', EntityType::class, [
                 'class' => Salle::class,
                 'placeholder' => "Selectionner la salle",
-                'query_builder' => function (SalleRepository $qb)
-                {
-                    return $qb->createQueryBuilder('s')->orderBy('s.nomSalle', 'ASC');
-                },
-                'choice_label' => function(Salle $salle)
-                {
-                    return ($salle->getNomSalle());
-                },
+                'choice_label' => 'nomSalle',
                 'label' => 'Salle',
                 'required' => true
             ])
