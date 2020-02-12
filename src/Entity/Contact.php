@@ -56,7 +56,10 @@ class Contact
      * @ORM\Column(type="string", length=100)
      */
     private $Segment;
-
+    public function __toString(){
+        
+        return (string) $this->id;
+     }
     public function __construct()
     {
         $this->inscrit = new ArrayCollection();

@@ -179,21 +179,23 @@ class AddController extends AbstractController
     /**
      * @Route("/addInscription/{id}",name="addInscription")
      */
-    public function addInscription(Request $request,Inscription $inscription=null,Inscrit $inscrit,$id){
+    public function addInscription(Request $request,Inscrit $inscrit)
+    {
         $inscription= new Inscription();
 
         $form=$this->createForm(InscriptionType::class,$inscription);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())                        
             {  
-                $inscrit= new Inscrit();
-                $inscrit=$this->getDoctrine()->getRepository(Inscrit::class)->find($id);
                 $em=$this->getDoctrine()->getManager();
-                $inscription->getInscrit($inscrit);
+                $inscription->setInscrit($inscrit);
                 $em->persist($inscription);
                 $em->flush();
+                $this->addFlash('success','Inscription Enregistrée !');
+                return $this->redirectToRoute('addInscription',['id'=>$inscrit->getId()]);
             }
-                return $this->render('add/addInscription.html.twig',array('form'=>$form->createView(),'inscription'=>$inscription->getInscrit($inscrit),'inscrit'=>$inscrit->getInscription($inscription)));
+                return $this->render('add/addInscription.html.twig',array('form'=>$form->createView(),'inscription'=>$inscription,'inscrit'=>$inscrit));
     }
 }

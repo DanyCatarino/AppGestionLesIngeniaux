@@ -7,12 +7,12 @@
     .error {color: red}
 </style>
         <div class="jumbotron text-center p-4">
-            <h1 class="display-4">Nouvel Inscrit</h1>
+            <h1 class="display-4">Profil</h1>
         </div>
         <div class="example-wrapper">
             <div class="row">
                 <div class="col ">
-                    <p class="lead text-center">Nouvel inscrit</p><br/>
+                    <p class="lead text-center">Nouvel Inscrit</p><br/>
                     <div class="row">
                         <div class="col">
                            {{ form_start(form) }}
@@ -26,8 +26,9 @@
                 <div class="col">
                     <p class="lead text-center">Inscrit existant ?</p><br/>
                     <div class="row">
-                        <div class="col">
-                         <a class="btn btn-primary" href="{{path('selectInscrit')}}">Cliquez sur bouton ci-dessous</a> 
+                        <div class="col text-center md-4">
+                        <br>
+                            <a class="btn btn-primary" href="{{path('selectInscrit')}}">Cliquez sur bouton ci-dessous</a> 
                         </div>
                     </div>
                 </div>

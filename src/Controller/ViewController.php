@@ -129,12 +129,12 @@ class ViewController extends AbstractController
 
         if(!$inscrit)
         {
-            $message2="Il n'y aucun inscrit";
+            $message="Il n'y aucun inscrit";
         }
         else
         {
-            $message2=null;
+            $message=null;
         }
-        return $this->render('view/selectInscrit.html.twig',array('lesInscrits'=>$inscrit,'message'=>$message2));
+        return $this->render('view/selectInscrit.html.twig',array('lesInscrits'=>$inscrit,'message'=>$message));
     }
 }
