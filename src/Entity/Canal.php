@@ -33,6 +33,30 @@ class Canal
     **/
     private $inscription;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $Externe;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $Comission;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $Direct;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $NomDuContact;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $EmailDuContact;
     public function __construct()
     {
         $this->inscription = new ArrayCollection();
@@ -94,6 +118,66 @@ class Canal
                 $inscription->setCanal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getExterne(): ?string
+    {
+        return $this->Externe;
+    }
+
+    public function setExterne(?string $Externe): self
+    {
+        $this->Externe = $Externe;
+
+        return $this;
+    }
+
+    public function getComission(): ?float
+    {
+        return $this->Comission;
+    }
+
+    public function setComission(float $Comission): self
+    {
+        $this->Comission = $Comission;
+
+        return $this;
+    }
+
+    public function getDirect(): ?string
+    {
+        return $this->Direct;
+    }
+
+    public function setDirect(string $Direct): self
+    {
+        $this->Direct = $Direct;
+
+        return $this;
+    }
+
+    public function getNomDuContact(): ?string
+    {
+        return $this->NomDuContact;
+    }
+
+    public function setNomDuContact(string $NomDuContact): self
+    {
+        $this->NomDuContact = $NomDuContact;
+
+        return $this;
+    }
+
+    public function getEmailDuContact(): ?string
+    {
+        return $this->EmailDuContact;
+    }
+
+    public function setEmailDuContact(string $EmailDuContact): self
+    {
+        $this->EmailDuContact = $EmailDuContact;
 
         return $this;
     }

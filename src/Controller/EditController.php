@@ -17,9 +17,14 @@ use App\Form\AnimateurType;
 use App\Form\AtelierType;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Entity\Age;
+use App\Entity\Canal;
+use App\Form\CanalType;
+
 
 class EditController extends AbstractController
 {
+   
     /**
      * @Route("/delInstance/{id}", name="delInstance")
      */

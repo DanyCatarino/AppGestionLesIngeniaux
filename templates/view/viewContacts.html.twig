@@ -20,9 +20,12 @@
                         <th scope="col">Nom</th>
                         <th scope="col">Prenom</th>
                         <th scope="col">Adresse Mail</th>
-                        <th scope="col">Date Naissance</th>
                         <th scope="col">Telephone</th>
-                        <th scope="col"></th>
+                        <th scope="col">Inscrit</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Provenance</th>
+                        <th scope="col">Segment</th>
+                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -33,10 +36,13 @@
                     <td>{{contact.nom}}</td>
                     <td>{{contact.prenom}}</td>
                     <td>{{contact.mail}}</td>
-                    <td>{{contact.dateNaissance|date("m/d/Y")}}</td>
                     <td>{{contact.telephone}}</td>
+                    <td>{{contact.Notes}}</td>
+                    <td>{{contact.Provenance}}</td>
+                    <td>{{contact.Segment}}</td>
+                    <td></td>
                     <td><a class="btn btn-danger" href="{{path('delContact',{'id': contact.id})}}">Supprimer</a></td>
-                    <td><a class="btn btn-primary" href="">Modifier</a></br></td>
+                    <td><a class="btn btn-primary" href="{{path('editContact',{'id': contact.id})}}">Modifier</a></br></td>
                 </tr>
             {%endfor%}
         </table>

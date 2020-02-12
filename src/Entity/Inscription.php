@@ -15,12 +15,6 @@ class Inscription
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateInscription;
-
     /**
      * @ORM\Column(type="boolean")
      */

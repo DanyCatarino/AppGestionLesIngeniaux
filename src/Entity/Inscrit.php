@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InscritRepository")
  */
@@ -20,21 +21,27 @@ class Inscrit
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10)
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Regex(pattern="/[0-9]{10}/")
      */
     private $telephone;
 
@@ -49,6 +56,14 @@ class Inscrit
     **/
     private $contact;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateNaissance;
+    public function __toString(){
+        
+       return (string) $this->id;
+    }
     public function __construct()
     {
         $this->inscription = new ArrayCollection();
@@ -149,4 +164,17 @@ class Inscrit
 
         return $this;
     }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->dateNaissance;
+    }
+
+    public function setDateNaissance(?\DateTimeInterface $dateNaissance): self
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
 }

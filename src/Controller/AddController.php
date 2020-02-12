@@ -19,6 +19,13 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Entity\Canal;
 use App\Form\CanalType;
+use App\Entity\Age;
+use App\Entity\Inscrit;
+use App\Form\InscritType;
+use App\Entity\Inscription;
+use App\Form\InscriptionType;
+use Symfony\Component\Form\FormInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class AddController extends AbstractController
 {
@@ -146,5 +153,49 @@ class AddController extends AbstractController
     return $this->render('add/addCanal.html.twig',array(
         'form' => $form->createView(),
     ));
+    }
+    /**
+     * @Route("/addInscrit",name="addInscrit") 
+     */
+    public function addInscrit(Request $request,Inscrit $inscrit=null)
+    {
+        if(!$inscrit)
+        {
+            $inscrit = new Inscrit();
+        }
+        $form = $this->createForm(InscritType::class,$inscrit);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&& $form->isValid()) {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($inscrit);
+            $em->flush();
+            return $this->redirectToRoute('addInscription', array('id' => $inscrit->getId()));
+        }
+    return $this->render('add/addInscrit.html.twig',array(
+        'form' => $form->createView(),
+        'id' => $inscrit->getId())
+    );
+    }
+    /**
+     * @Route("/addInscription/{id}",name="addInscription")
+     */
+    public function addInscription(Request $request,Inscrit $inscrit)
+    {
+        $inscription= new Inscription();
+
+        $form=$this->createForm(InscriptionType::class,$inscription);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())                        
+            {  
+                $em=$this->getDoctrine()->getManager();
+                $inscription->setInscrit($inscrit);
+                $em->persist($inscription);
+                $em->flush();
+                $this->addFlash('success','Inscription Enregistrée !');
+                return $this->redirectToRoute('addInscription',['id'=>$inscrit->getId()]);
+            }
+                return $this->render('add/addInscription.html.twig',array('form'=>$form->createView(),'inscription'=>$inscription,'inscrit'=>$inscrit));
     }
 }

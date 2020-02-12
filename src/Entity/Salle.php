@@ -28,6 +28,32 @@ class Salle
     **/
     private $instance;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $Adresse;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $capaciteSalle;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $NomGestionnaireSalle;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $EmailGestionnaireSalle;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $TelephoneGestionnaireSalle;
+
+
     public function __toString() {
         return (string) $this->id;
     }
@@ -81,6 +107,67 @@ class Salle
                 $instance->setSalle(null);
             }
         }
+
+        return $this;
+    }
+
+
+    public function getAdresse(): ?string
+    {
+        return $this->Adresse;
+    }
+
+    public function setAdresse(?string $Adresse): self
+    {
+        $this->Adresse = $Adresse;
+
+        return $this;
+    }
+
+    public function getCapaciteSalle(): ?int
+    {
+        return $this->capaciteSalle;
+    }
+
+    public function setCapaciteSalle(int $capaciteSalle): self
+    {
+        $this->capaciteSalle = $capaciteSalle;
+
+        return $this;
+    }
+
+    public function getNomGestionnaireSalle(): ?string
+    {
+        return $this->NomGestionnaireSalle;
+    }
+
+    public function setNomGestionnaireSalle(string $NomGestionnaireSalle): self
+    {
+        $this->NomGestionnaireSalle = $NomGestionnaireSalle;
+
+        return $this;
+    }
+
+    public function getEmailGestionnaireSalle(): ?string
+    {
+        return $this->EmailGestionnaireSalle;
+    }
+
+    public function setEmailGestionnaireSalle(string $EmailGestionnaireSalle): self
+    {
+        $this->EmailGestionnaireSalle = $EmailGestionnaireSalle;
+
+        return $this;
+    }
+
+    public function getTelephoneGestionnaireSalle(): ?string
+    {
+        return $this->TelephoneGestionnaireSalle;
+    }
+
+    public function setTelephoneGestionnaireSalle(string $TelephoneGestionnaireSalle): self
+    {
+        $this->TelephoneGestionnaireSalle = $TelephoneGestionnaireSalle;
 
         return $this;
     }

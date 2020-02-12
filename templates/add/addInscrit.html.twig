@@ -1,0 +1,37 @@
+{% extends 'base.html.twig'  %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<style>
+    .example-wrapper { margin: 2em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+    .error {color: red}
+</style>
+        <div class="jumbotron text-center p-4">
+            <h1 class="display-4">Profil</h1>
+        </div>
+        <div class="example-wrapper">
+            <div class="row">
+                <div class="col ">
+                    <p class="lead text-center">Nouvel Inscrit</p><br/>
+                    <div class="row">
+                        <div class="col">
+                           {{ form_start(form) }}
+                           {{form_end(form)}}
+                        
+                            {# <a href="{{path('addInscription', {id: inscrit.id})}}"class="btn btn-primary">Enregistrer</a> #}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col">
+                    <p class="lead text-center">Inscrit existant ?</p><br/>
+                    <div class="row">
+                        <div class="col text-center md-4">
+                        <br>
+                            <a class="btn btn-primary" href="{{path('selectInscrit')}}">Cliquez sur bouton ci-dessous</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %} 

@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 class AtelierType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -58,6 +59,7 @@ class AtelierType extends AbstractType
                 ])   
             ->add('prix',MoneyType::class)
             ->add('public')
+            ->add('age')
             ->add('Ajouter',SubmitType::class)
         ;
     }
