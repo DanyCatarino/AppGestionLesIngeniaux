@@ -24,7 +24,10 @@ class CanalType extends AbstractType
             ->add('comission',PercentType::class)
             ->add('NomDuContact',TextType::class)
             ->add('EmailDuContact',EmailType::class)
-            ->add('Ajouter un Canal',SubmitType::class)
+            ->add('Ajouter un Canal',SubmitType::class,[
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block',
+                ]])
         ;
     }
 

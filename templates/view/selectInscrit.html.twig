@@ -40,7 +40,7 @@
                         <td>{{inscrit.telephone}}</td>
                         <td>{{inscrit.contact}}</td>
                         <td>{{inscrit.dateNaissance|date("m/d/Y")}}</td>
-                        <td><a class="btn btn-success   " href="{{path('addInscription', {'id' : inscrit.id})}}">Ajouter Inscription</a></br></td>
+                        <td><a class="btn btn-success"href="{{path('addInscription', {'id' : inscrit.id})}}">Ajouter Inscription</a></br></td>
                         </tr>
                         {% endfor %}
                  </tbody>

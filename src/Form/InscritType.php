@@ -26,10 +26,15 @@ class InscritType extends AbstractType
             ->add('telephone',TextType::class)  
             ->add('contact',EntityType::class,[
                 'class' => Contact::class,
+                'placeholder' => 'Selectionner un Contact',
+                'required'=>false,
                 'choice_label' => 'nom',
             ])
             ->add('dateNaissance',BirthdayType::class)
-            ->add('Enregistrer',SFType\SubmitType::class)   
+            ->add('Enregistrer',SFType\SubmitType::class,[
+            'attr' => [
+                'class' => 'btn btn-primary btn-block',
+            ]])   
         ;
     }
 

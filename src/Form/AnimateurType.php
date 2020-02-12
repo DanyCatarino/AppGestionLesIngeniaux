@@ -36,7 +36,11 @@ class AnimateurType extends AbstractType
                     return strtoupper($key)
                 ;}
                 ])
-            ->add('Ajouter',SFType\SubmitType::class)
+            ->add('Ajouter',SFType\SubmitType::class,
+                [
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block',
+                ]])
         ;
     }
 

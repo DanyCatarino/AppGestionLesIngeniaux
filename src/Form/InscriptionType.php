@@ -28,14 +28,17 @@ class InscriptionType extends AbstractType
     {
         $builder
             ->add('inscrit',TextType::class, array(
-                'attr' => array('readonly'=>true,'empty_data'=>'3'),))
+                'attr' => array('readonly'=>true)))
             ->add('instance')
             ->add('canal',EntityType::class,[
                 'class'=>Canal::class,
                 'choice_label'=>'nomCanal',
             ])
             ->add('paye',CheckboxType::class, array('required' => false))
-            ->add('Enregistrer',SFType\SubmitType::class)
+            ->add('Enregistrer',SFType\SubmitType::class,[
+            'attr' => [
+                'class' => 'btn btn-primary btn-block',
+            ]])
             ;
     }
 

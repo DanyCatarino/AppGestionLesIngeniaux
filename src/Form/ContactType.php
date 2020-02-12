@@ -67,7 +67,10 @@ class ContactType extends AbstractType
                     return strtoupper($key)
                 ;}
                 ])
-            ->add('Creer Contact',SubmitType::class)
+            ->add('Creer Contact',SubmitType::class,[
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block',
+                ]])
         ;
     }
 
