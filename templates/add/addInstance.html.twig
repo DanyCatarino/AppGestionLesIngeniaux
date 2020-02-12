@@ -7,10 +7,36 @@
     .error {color: red}
 </style>
 <div class="jumbotron text-center p-4">
-    <h1 class="display-4">Ajouter une instance</h1>
+    <h1 class="display-4">Planifier un atelier</h1>
 </div>
 <div class="example-wrapper">
-    {{ form(form) }}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    {# Génération du label + error + widget pour un champ. #}
+    {{ form_row(form.atelier) }}
+
+    {# Génération du label + error + widget pour un champ. #}
+    {{ form_row(form.animateur) }}
+
+    {# Génération du label + error + widget pour un champ. #}
+    {{ form_row(form.statut) }}
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    {{ form_widget(form.Ajouter) }}
+
+    {# Génération automatique des champs pas encore écrits.
+        Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+        et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+</div>
 </div>
 </div>
 {% endblock %} 
+
+

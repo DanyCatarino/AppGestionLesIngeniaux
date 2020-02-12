@@ -47,4 +47,15 @@ class InstanceRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    function findByDispoBrouillonInstance()
+    {
+        return $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('i')
+            ->from('App\Entity\Instance', 'i')
+            ->where('i.statut IN (\'Brouillon\', \'Disponible\')')
+            ->getQuery()
+            ->getResult();
+        ;
+    }
 }

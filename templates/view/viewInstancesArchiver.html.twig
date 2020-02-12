@@ -2,15 +2,12 @@
 
 {% block body %}
 <div class="jumbotron text-center p-4">
-  <h1 class="display-4">Planification</h1>
+  <h1 class="display-4">Liste des instances archivés</h1>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4 text-center">
-          <a class="btn btn-primary" href="{{path('addInstance')}}">Ajouter une instance</a>
-          <a class="btn btn-secondary" href="{{path('listeInstancesArchiver')}}">Archive</a>
+        <div class="col text-center">
+            <a class="btn btn-primary text-center" href="{{path('listeInstances')}}">Planification </a>
         </div>
     </div><br/>
     <div class="table-responsive-sm">
@@ -22,20 +19,16 @@
             <th scope="col">Atelier</th>
             <th scope="col">Statut</th>
             <th scope="col">Animateur</th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          {% for instance in allInstances %}
+          {% for instance in lesInstancesArchive %}
             <tr>
               <th scope="row">{{instance.id}}</th>
               <td>{{instance.atelier.public}}</td>
-              <td>{{instance.atelier.titre}}</td>              
+              <td>{{instance.atelier.titre}}</td>
               <td>{{instance.statut}}</td>
               <td>{{instance.animateur.nom}}</td>
-              <td><a class="btn btn-danger" href="{{path('archiverInstance',{'id': instance.id})}}">Archiver</a></br></td>
-              <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>
             </tr>
           {% endfor %}
         </tbody>

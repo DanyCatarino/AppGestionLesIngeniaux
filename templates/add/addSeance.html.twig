@@ -1,6 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig'  %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-
 {% block body %}
 <style>
     .example-wrapper { margin: 2em auto; max-width: 400px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -8,9 +7,15 @@
     .error {color: red}
 </style>
 <div class="jumbotron text-center p-4">
-    <h1 class="display-4">Ajouter un contact</h1>
+    <h1 class="display-4">Ajouter les séances de cet instance</h1>
 </div>
 <div class="example-wrapper">
-{{ form(form) }}
+    Nombre de séances : {{instance.atelier.nbSeances}}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(form) }}   
 </div>
-{% endblock %}
+{% endblock %} 

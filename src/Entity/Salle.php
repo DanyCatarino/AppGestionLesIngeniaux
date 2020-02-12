@@ -24,9 +24,9 @@ class Salle
     private $nomSalle;
 
     /**
-    * @ORM\OneToMany(targetEntity="Instance", mappedBy="Salle")
+    * @ORM\OneToMany(targetEntity="Seance", mappedBy="Salle")
     **/
-    private $instance;
+    private $seance;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -60,7 +60,7 @@ class Salle
 
     public function __construct()
     {
-        $this->instance = new ArrayCollection();
+        $this->seance = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,30 +81,30 @@ class Salle
     }
 
     /**
-     * @return Collection|Instance[]
+     * @return Collection|Seance[]
      */
-    public function getInstance(): Collection
+    public function getSeance(): Collection
     {
-        return $this->instance;
+        return $this->seance;
     }
 
-    public function addInstance(Instance $instance): self
+    public function addSeance(Seance $seance): self
     {
-        if (!$this->instance->contains($instance)) {
-            $this->instance[] = $instance;
-            $instance->setSalle($this);
+        if (!$this->seance->contains($seance)) {
+            $this->seance[] = $seance;
+            $seance->setSalle($this);
         }
 
         return $this;
     }
 
-    public function removeInstance(Instance $instance): self
+    public function removeSeance(Seance $seance): self
     {
-        if ($this->instance->contains($instance)) {
-            $this->instance->removeElement($instance);
+        if ($this->seance->contains($seance)) {
+            $this->seance->removeElement($seance);
             // set the owning side to null (unless already changed)
-            if ($instance->getSalle() === $this) {
-                $instance->setSalle(null);
+            if ($seance->getSalle() === $this) {
+                $seance->setSalle(null);
             }
         }
 

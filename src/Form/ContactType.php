@@ -20,7 +20,7 @@ class ContactType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mail',EmailType::class,['help'=>'Entrez une adresse@mail',])
+            ->add('mail',EmailType::class)
             ->add('telephone',TelType::class)
             ->add('Notes',TextType::class)
             ->add('Provenance',ChoiceType::class, [
@@ -67,10 +67,10 @@ class ContactType extends AbstractType
                     return strtoupper($key)
                 ;}
                 ])
-            ->add('Creer Contact',SubmitType::class,[
+            ->add('Ajouter le contact', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-primary btn-block',
-                ]])
+                    'class' => 'btn btn-primary btn-block'],
+            ])
         ;
     }
 

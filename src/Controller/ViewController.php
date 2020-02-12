@@ -26,7 +26,7 @@ class ViewController extends AbstractController
     */
     public function listeInstances()
     {
-        $instance = $this->getDoctrine()->getRepository(Instance::class)->findall();
+        $instance = $this->getDoctrine()->getRepository(Instance::class)->findByDispoBrouillonInstance();
         if(!$instance){
             $message="Pas d'instances !";
         }
@@ -43,6 +43,8 @@ class ViewController extends AbstractController
     public function listeAteliers(){
         
         $atelier= $this->getDoctrine()->getRepository(Atelier::class)->findall();//retourne toutes les ateliers de la collection
+
+        $atelier= $this->getDoctrine()->getRepository(Atelier::class)->findByDispoBrouillonAtelier(); //retourne toutes les ateliers dans la collection
 
          if(!$atelier){
              $message="Il n'y a aucun atelier  disponible"; //pas de atelier créer et affichage d'un message 

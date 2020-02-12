@@ -8,18 +8,13 @@
 </style>
 
 <div class="jumbotron text-center p-4">
-    <h1 class="display-4">Liste des ateliers</h1>
+    <h1 class="display-4">Liste des ateliers archivés</h1>
 </div>
 <div class="example-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4 text-center">
-                <a class="btn btn-primary text-center" href="{{path('addAtelier')}}">Ajouter un atelier</a>
-            </div>
-            <div class="col-md-4 text-center">
-                <a class="btn btn-secondary" href="{{path('listeAteliersArchiver')}}">Archive</a>
+            <div class="col text-center">
+                <a class="btn btn-primary text-center" href="{{path('listeAteliers')}}">Liste des Ateliers</a>
             </div>
         </div><br/>
         <div class="table-responsive-sm">
@@ -32,27 +27,19 @@
                         <th scope="col">Statut</th>
                         <th scope="col">Type</th>
                         <th scope="col">Prix</th>
-                        <th scope="col">Public</th>
-                        <th scope="col">Age</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for atelier in lesAteliers %}
+                    {%for atelier in lesAteliersArchive %}
                         <tr>
                             <th scope="row">{{atelier.id}}</th>
                             <td>{{atelier.titre}}</td>
                             <td>{{atelier.public}}</td>
                             <td>{{atelier.statut}}</td>
                             <td>{{atelier.type}}</td>
-                            <td>{{atelier.age|join(', ')}}</td> 
                             <td>{{atelier.prix}}</td>
-                            <td><a class="btn btn-danger" href="{{path('archiverAtelier',{'id': atelier.id})}}">Archiver</a></td>
-                            <td><a class="btn btn-primary" href="{{path('editAtelier',{'id': atelier.id})}}">Modifier</a></br></td>
                         </tr>
-                    {% endfor %}
+                    {%endfor%}
                 </tbody>
             </table>
         </div>

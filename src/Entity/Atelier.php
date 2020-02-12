@@ -19,9 +19,9 @@ class Atelier
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=360)
      */
-    private $description;
+    private $descriptionCourte;
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -48,6 +48,36 @@ class Atelier
     private $public;
 
     /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $titre;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionLongue;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $theme;
+
+    /**
+     * @ORM\Column(type="integer", length=100)
+     */
+    private $nbSeances;
+
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $duree;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Age", inversedBy="ateliers")
      */
     private $age;
@@ -66,14 +96,14 @@ class Atelier
         return $this->id;
     }
 
-    public function getDescription(): ?string
+    public function getDescriptionCourte(): ?string
     {
-        return $this->description;
+        return $this->descriptionCourte;
     }
 
-    public function setDescription(string $description): self
+    public function setDescriptionCourte(string $descriptionCourte): self
     {
-        $this->description = $description;
+        $this->descriptionCourte = $descriptionCourte;
 
         return $this;
     }
@@ -181,6 +211,78 @@ class Atelier
             $this->age->removeElement($age);
             $age->setAge(null);
         }
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getDescriptionLongue(): ?string
+    {
+        return $this->descriptionLongue;
+    }
+
+    public function setDescriptionLongue(?string $descriptionLongue): self
+    {
+        $this->descriptionLongue = $descriptionLongue;
+
+        return $this;
+    }
+
+    public function getTheme(): ?string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(string $theme): self
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getNbSeances(): ?int
+    {
+        return $this->nbSeances;
+    }
+
+    public function setNbSeances(int $nbSeances): self
+    {
+        $this->nbSeances = $nbSeances;
+
+        return $this;
+    }
+
+    public function getDuree(): ?\DateTimeInterface
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(?\DateTimeInterface $duree): self
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
