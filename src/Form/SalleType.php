@@ -19,9 +19,9 @@ class SalleType extends AbstractType
             ->add('nomSalle')
             ->add('Adresse',TextType::class)
             ->add('capaciteSalle',TextType::class)
-            ->add('NomGestionnaireSalle',TextType::class)
-            ->add('EmailGestionnaireSalle',EmailType::class)
-            ->add('TelephoneGestionnaireSalle',TelType::class)
+            ->add('nomGestionnaireSalle',TextType::class)
+            ->add('emailGestionnaireSalle',EmailType::class)
+            ->add('telephoneGestionnaireSalle',TelType::class)
             ->add('Ajouter',SFType\SubmitType::class)
         ;
     }

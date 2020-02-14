@@ -30,7 +30,9 @@ class InscritType extends AbstractType
                 'required'=>false,
                 'choice_label' => 'nom',
             ])
-            ->add('dateNaissance',BirthdayType::class)
+            ->add('dateNaissance',BirthdayType::class, [
+                'widget' => 'single_text'
+            ])
             ->add('Enregistrer',SFType\SubmitType::class,[
             'attr' => [
                 'class' => 'btn btn-primary btn-block',

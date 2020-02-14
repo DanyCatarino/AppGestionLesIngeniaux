@@ -70,10 +70,10 @@ class AddController extends AbstractController
             $em->persist($seance);
             $em->flush();
 
-            $this->addFlash('success','Séance ajoutée !');
+            $this->addFlash('success','Ok');
             return $this->redirectToRoute('addSeance', ['id'=>$instance->getId()]);
         }
-        return $this->render('add/addSeance.html.twig', array('form'=>$form->createView(), 'seance'=>$seance, 'instance'=>$instance));
+        return $this->render('add/addSeance.html.twig', array('formObject' => $form, 'seance'=>$seance, 'instance'=>$instance));
     }
 
     /**
@@ -137,6 +137,7 @@ class AddController extends AbstractController
         }
         return $this->render('add/addSalle.html.twig', array('form'=>$form->createView()));
     }
+
     /**
      * @Route("/addContact",name="addContact")
      */
@@ -160,6 +161,7 @@ class AddController extends AbstractController
         ));
 
     }
+
     /**
      * @Route("/addCanal", name="addCanal")
      */
@@ -178,10 +180,11 @@ class AddController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('listeCanaux');
         }
-    return $this->render('add/addCanal.html.twig',array(
-        'form' => $form->createView(),
-    ));
+        return $this->render('add/addCanal.html.twig',array(
+            'form' => $form->createView(),
+        ));
     }
+
     /**
      * @Route("/addInscrit",name="addInscrit") 
      */
@@ -199,11 +202,12 @@ class AddController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('addInscription', array('id' => $inscrit->getId()));
         }
-    return $this->render('add/addInscrit.html.twig',array(
-        'form' => $form->createView(),
-        'id' => $inscrit->getId())
-    );
+        return $this->render('add/addInscrit.html.twig',array(
+            'form' => $form->createView(),
+            'id' => $inscrit->getId())
+        );
     }
+
     /**
      * @Route("/addInscription/{id}",name="addInscription")
      */
@@ -215,15 +219,15 @@ class AddController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())                        
-            {  
-                $em=$this->getDoctrine()->getManager();
-                $inscription->setInscrit($inscrit);
-                $em->persist($inscription);
-                $em->flush();
-                $this->addFlash('success','Inscription Enregistrée !');
-                return $this->redirectToRoute('addInscription',['id'=>$inscrit->getId()]);
-            }
-                return $this->render('add/addInscription.html.twig',array('form'=>$form->createView(),'inscription'=>$inscription,'inscrit'=>$inscrit));
+        if($form->isSubmitted() && $form->isValid())
+        {  
+            $em=$this->getDoctrine()->getManager();
+            $inscription->setInscrit($inscrit);
+            $em->persist($inscription);
+            $em->flush();
+            $this->addFlash('success','Inscription Enregistrée !');
+            return $this->redirectToRoute('addInscription',['id'=>$inscrit->getId()]);
+        }
+        return $this->render('add/addInscription.html.twig',array('form'=>$form->createView(),'inscription'=>$inscription,'inscrit'=>$inscrit));
     }
 }

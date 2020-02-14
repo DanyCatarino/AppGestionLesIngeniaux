@@ -9,11 +9,11 @@
     <h1 class="display-4">Les séances</h1>
 </div>
 <div class="example-wrapper">
+    
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Seance</th>
-                <th scope="col">Etat</th>
                 <th scope="col">Date</th>
                 <th scope="col">Salle</th>
                 <th></th>
@@ -21,25 +21,23 @@
         </thead>
     
         {% for i in range(0, instance.atelier.nbSeances - 1) %}        
-            {% set form = formObject.createView %}                
+            {% set form = formObject.createView %}
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <tbody>
-                    <tr>    
+                    <tr>
                         {{ form_start(form) }}
                         <th scope="row">{{ i + 1 }}</th>
-                        <th>
-                            {% for message in app.flashes('success') %}
-                                <div class="alert alert-success text-center p-1">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        </th>
                         <td>{{ form_widget(form.date) }}</td>
                         <td>{{ form_widget(form.salle) }}</td>
                         <td>{{ form_row(form.Ajouter) }}</td>
                         {{ form_end(form) }}
                     </tr>
                 </tbody>
-        {% endfor %} 
+        {% endfor %}
     </table>
 </div>
 {% endblock %} 

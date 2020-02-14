@@ -21,7 +21,6 @@
                         <th scope="col">Prenom</th>
                         <th scope="col">Adresse Mail</th>
                         <th scope="col">Telephone</th>
-                        <th scope="col">Inscrit</th>
                         <th scope="col">Notes</th>
                         <th scope="col">Provenance</th>
                         <th scope="col">Segment</th>
@@ -40,7 +39,6 @@
                     <td>{{contact.Notes}}</td>
                     <td>{{contact.Provenance}}</td>
                     <td>{{contact.Segment}}</td>
-                    <td></td>
                     <td><a class="btn btn-danger" href="{{path('delContact',{'id': contact.id})}}">Supprimer</a></td>
                     <td><a class="btn btn-primary" href="{{path('editContact',{'id': contact.id})}}">Modifier</a></br></td>
                 </tr>

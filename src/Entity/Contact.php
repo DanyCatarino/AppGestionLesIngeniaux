@@ -45,17 +45,18 @@ class Contact
     /**
      * @ORM\Column(type="string", length=120, nullable=true)
      */
-    private $Notes;
+    private $notes;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $Provenance;
+    private $provenance;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $Segment;
+    private $segment;
+
     public function __toString(){
         
         return (string) $this->id;
@@ -150,36 +151,36 @@ class Contact
 
     public function getNotes(): ?string
     {
-        return $this->Notes;
+        return $this->notes;
     }
 
-    public function setNotes(?string $Notes): self
+    public function setNotes(?string $notes): self
     {
-        $this->Notes = $Notes;
+        $this->notes = $notes;
 
         return $this;
     }
 
     public function getProvenance(): ?string
     {
-        return $this->Provenance;
+        return $this->provenance;
     }
 
-    public function setProvenance(string $Provenance): self
+    public function setProvenance(string $provenance): self
     {
-        $this->Provenance = $Provenance;
+        $this->provenance = $provenance;
 
         return $this;
     }
 
     public function getSegment(): ?string
     {
-        return $this->Segment;
+        return $this->segment;
     }
 
-    public function setSegment(string $Segment): self
+    public function setSegment(string $segment): self
     {
-        $this->Segment = $Segment;
+        $this->segment = $segment;
 
         return $this;
     }

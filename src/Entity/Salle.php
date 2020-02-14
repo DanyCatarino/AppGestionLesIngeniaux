@@ -31,7 +31,7 @@ class Salle
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $Adresse;
+    private $adresse;
 
     /**
      * @ORM\Column(type="integer")
@@ -41,17 +41,17 @@ class Salle
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $NomGestionnaireSalle;
+    private $nomGestionnaireSalle;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $EmailGestionnaireSalle;
+    private $emailGestionnaireSalle;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $TelephoneGestionnaireSalle;
+    private $telephoneGestionnaireSalle;
 
 
     public function __toString() {
@@ -114,12 +114,12 @@ class Salle
 
     public function getAdresse(): ?string
     {
-        return $this->Adresse;
+        return $this->adresse;
     }
 
-    public function setAdresse(?string $Adresse): self
+    public function setAdresse(?string $adresse): self
     {
-        $this->Adresse = $Adresse;
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -138,36 +138,36 @@ class Salle
 
     public function getNomGestionnaireSalle(): ?string
     {
-        return $this->NomGestionnaireSalle;
+        return $this->nomGestionnaireSalle;
     }
 
-    public function setNomGestionnaireSalle(string $NomGestionnaireSalle): self
+    public function setNomGestionnaireSalle(string $nomGestionnaireSalle): self
     {
-        $this->NomGestionnaireSalle = $NomGestionnaireSalle;
+        $this->nomGestionnaireSalle = $nomGestionnaireSalle;
 
         return $this;
     }
 
     public function getEmailGestionnaireSalle(): ?string
     {
-        return $this->EmailGestionnaireSalle;
+        return $this->emailGestionnaireSalle;
     }
 
-    public function setEmailGestionnaireSalle(string $EmailGestionnaireSalle): self
+    public function setEmailGestionnaireSalle(string $emailGestionnaireSalle): self
     {
-        $this->EmailGestionnaireSalle = $EmailGestionnaireSalle;
+        $this->emailGestionnaireSalle = $emailGestionnaireSalle;
 
         return $this;
     }
 
     public function getTelephoneGestionnaireSalle(): ?string
     {
-        return $this->TelephoneGestionnaireSalle;
+        return $this->telephoneGestionnaireSalle;
     }
 
-    public function setTelephoneGestionnaireSalle(string $TelephoneGestionnaireSalle): self
+    public function setTelephoneGestionnaireSalle(string $telephoneGestionnaireSalle): self
     {
-        $this->TelephoneGestionnaireSalle = $TelephoneGestionnaireSalle;
+        $this->telephoneGestionnaireSalle = $telephoneGestionnaireSalle;
 
         return $this;
     }
