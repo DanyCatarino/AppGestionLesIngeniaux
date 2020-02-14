@@ -41,7 +41,7 @@
                 <td>{{instance.atelier.titre}}</td>              
                 <td>{{instance.statut}}</td>
                 <td>{{instance.animateur.nom}}</td>
-                <td><a class="btn btn-success" href="{#{{path('editSeance',{'id' : instance.id})}}#}">Les séances</a></br></td>
+                 {# <td><a class="btn btn-success" href="{{path('editSeance',{'id' : instance.id})}}">Les séances</a></br></td> #}
                 <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>
                 <td><a class="btn btn-danger" href="{{path('archiverInstance',{'id': instance.id})}}">Archiver</a></br></td>
               </tr>
