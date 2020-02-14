@@ -17,13 +17,13 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- Image and text -->
         <nav class="navbar navbar-dark bg-dark p-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ path('menu') }}">
                 <img src="{{asset('logo_ingéniaux.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
                 Les Ingéniaux
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a href="{{ path('menu') }}" class="nav-link">Menu</a>
+                    <a href="" class="nav-link">Retour </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>

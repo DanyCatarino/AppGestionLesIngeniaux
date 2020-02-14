@@ -28,6 +28,7 @@
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
         "symfony/yaml": "4.4.*",
+        "tattali/calendar-bundle": "^1.1",
         "twig/intl-extra": "^3.0"
     },
     "require-dev": {
