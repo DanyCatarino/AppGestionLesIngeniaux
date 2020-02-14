@@ -2,50 +2,46 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 2em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
     .error {color: red}
 </style>
 <div class="jumbotron text-center p-4">
-    <h1 class="display-4">Inscription Inscrit Existant</h1>
-    </div>
+    <h1 class="display-4">Liste des inscrits</h1>
+</div>
 <div class="example-wrapper">
-<div class="container">
-    <div class="row">
-        <div class="col text-center">
-                </div><br/>
-                <div class="table-responsive-sm">
-                     <table class="table">
-                     <caption>Liste Des Inscrits Existants</caption>
-                        <thead class="thead-dark">
-                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prenom</th>
-                            <th scope="col">Mail</th>
-                            <th scope="col">Telephone</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">dateNaissance</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+    <div class="container">
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Mail</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Date de naissance</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 <tbody>
-                        {% for inscrit in lesInscrits %}
+                    {% for inscrit in lesInscrits %}
                         <tr>
-                        <th scope="row">{{inscrit.id}}</th>
-                        <td>{{inscrit.nom}}</td>
-                        <td>{{inscrit.prenom}}</td>
-                        <td>{{inscrit.mail}}</td>
-                        <td>{{inscrit.telephone}}</td>
-                        <td>{{inscrit.contact}}</td>
-                        <td>{{inscrit.dateNaissance|date("m/d/Y")}}</td>
-                        <td><a class="btn btn-success"href="{{path('addInscription', {'id' : inscrit.id})}}">Ajouter Inscription</a></br></td>
+                            <th scope="row">{{inscrit.id}}</th>
+                            <td>{{inscrit.nom}}</td>
+                            <td>{{inscrit.prenom}}</td>
+                            <td>{{inscrit.mail}}</td>
+                            <td>{{inscrit.telephone}}</td>
+                            <td>{{inscrit.contact}}</td>
+                            <td>{{inscrit.dateNaissance|date("m/d/Y")}}</td>
+                            <td><a class="btn btn-primary"href="{{path('addInscription', {'id' : inscrit.id})}}">Inscrire</a></br></td>
                         </tr>
-                        {% endfor %}
-                 </tbody>
-             </div>
-    </table>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %} 
 

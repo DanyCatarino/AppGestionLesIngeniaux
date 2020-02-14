@@ -20,7 +20,9 @@ class SeanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateTimeType::class)
+            ->add('date', DateTimeType::class,[
+                'widget' => 'single_text'
+            ])
             ->add('salle', EntityType::class, [
                 'class' => Salle::class,
                 'placeholder' => "Selectionner la salle",

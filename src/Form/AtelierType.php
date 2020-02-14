@@ -71,7 +71,9 @@ class AtelierType extends AbstractType
                 ])
             ->add('prix',MoneyType::class)
             ->add('descriptionLongue')
-            ->add('photo', FileType::class)
+            ->add('photo', FileType::class, [
+                'required' => false
+            ])
             ->add('age')
             ->add('Ajouter',SubmitType::class)
         ;

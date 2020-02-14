@@ -22,47 +22,47 @@ class ContactType extends AbstractType
             ->add('prenom')
             ->add('mail',EmailType::class)
             ->add('telephone',TelType::class)
-            ->add('Notes',TextType::class)
-            ->add('Provenance',ChoiceType::class, [
+            ->add('notes',TextType::class)
+            ->add('provenance',ChoiceType::class, [
                 'choices'=>[
-                    'Visite Boutique'=>"Visite Boutique",
-                    'Formulaire Contact site '=>"Formulaire Contact Site",
-                    'Commande sur Site'=>"Commande sur Site",
-                    'Appel Téléphonique'=>"Appel téléphonique",
+                    'Visite boutique'=>"Visite boutique",
+                    'Formulaire contact site '=>"Formulaire contact site",
+                    'Commande sur site'=>"Commande sur site",
+                    'Appel téléphonique'=>"Appel téléphonique",
                 ],
                 'choice_label' => function ($choice, $key, $value) 
                 {
-                    if ("Visite Boutique" === $choice) {
-                        return 'Visite Boutique';
+                    if ("Visite boutique" === $choice) {
+                        return 'Visite boutique';
                     }
-                    if("Formulaire Contact Site" ===$choice){
-                        return 'Formulaire Contact Site';
+                    if("Formulaire contact site" ===$choice){
+                        return 'Formulaire contact site';
                     }
-                    if("Commande sur Site" ===$choice){
-                        return 'Commande sur Site';
+                    if("Commande sur site" ===$choice){
+                        return 'Commande sur site';
                     }
                     if("Appel téléphonique" ===$choice){
-                        return 'Appel Téléphonique';
+                        return 'Appel téléphonique';
                     } 
                     return strtoupper($key)
                 ;}
                 ])
-            ->add('Segment',ChoiceType::class, [
+            ->add('segment',ChoiceType::class, [
                 'choices'=>[
-                    'Partenaire/Animateur'=>"Partenaire/Animateur",
-                    'Elève/Adulte'=>"Elève/Adulte",
-                    'Parent/Elève/Enfant'=>"Parent/Elève/Enfant"
+                    'Partenaire-Animateur'=>"Partenaire-Animateur",
+                    'Elève-Adulte'=>"Elève-Adulte",
+                    'Parent-Elève-Enfant'=>"Parent-Elève-Enfant"
                 ],
                 'choice_label' => function ($choice, $key, $value) 
                 {
-                    if ("Partenaire/Animateur" === $choice) {
-                        return 'Partenaire/Animateur';
+                    if ("Partenaire-Animateur" === $choice) {
+                        return 'Partenaire-Animateur';
                     }
-                    if("Elève/Adulte" ===$choice){
-                        return 'Elève/Adulte';
+                    if("Elève-Adulte" ===$choice){
+                        return 'Elève-Adulte';
                     }
-                    if("Parent/Elève/Enfant" ===$choice){
-                        return 'Parent/Elève/Enfant';
+                    if("Parent-Elève-Enfant" ===$choice){
+                        return 'Parent-Elève-Enfant';
                     }
                     return strtoupper($key)
                 ;}

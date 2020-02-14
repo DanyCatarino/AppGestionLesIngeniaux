@@ -66,5 +66,4 @@ class AtelierRepository extends ServiceEntityRepository
             ->getResult();
         ;
     }
-    */
 }

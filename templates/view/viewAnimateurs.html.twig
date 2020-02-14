@@ -25,9 +25,9 @@
               <th scope="col">Id</th>
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
-              <th scope="col">Email Contact</th>
-              <th scope="col">Telephone Contact</th>
-              <th scope="col">Documentation Disponible</th>
+              <th scope="col">Email</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Documentations</th>
               <th scope="col"></th>
               <th scope="col"></th>
               <th scope="col"></th>
@@ -40,7 +40,7 @@
               <td>{{animateur.nom}}</td>
               <td>{{animateur.prenom}}</td>
               <td>{{animateur.emailContact}}</td>
-              <td>{{animateur.TelephoneContact}}</td>
+              <td>{{animateur.telephone}}</td>
               <td>{{animateur.documentationDisponible}}</td>
               <td><a class="btn btn-danger" href="{{path('delAnimateur', {'id' : animateur.id})}}">Supprimer</a></br></td>
               <td><a class="btn btn-primary" href="{{path('editAnimateur',{'id' :animateur.id})}}">Modifier</a></br></td>

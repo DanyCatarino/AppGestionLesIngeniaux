@@ -19,7 +19,7 @@ class AnimateurType extends AbstractType
             ->add('nom')
             ->add('prenom',TextType::class)
             ->add('emailContact',TextType::class)
-            ->add('TelephoneContact',TelType::class)
+            ->add('telephone',TelType::class)
             ->add('documentationDisponible',ChoiceType::class,[
                 'choices'=>[
                     'Assurance'=>"Assurance",

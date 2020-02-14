@@ -17,8 +17,6 @@
             </div>
             <div class="col-md-4 text-center">
                 <a class="btn btn-primary text-center" href="{{path('addAtelier')}}">Ajouter un atelier</a>
-            </div>
-            <div class="col-md-4 text-center">
                 <a class="btn btn-secondary" href="{{path('listeAteliersArchiver')}}">Archive</a>
             </div>
         </div><br/>
@@ -33,7 +31,6 @@
                         <th scope="col">Type</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Public</th>
-                        <th scope="col">Age</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -47,8 +44,8 @@
                             <td>{{atelier.public}}</td>
                             <td>{{atelier.statut}}</td>
                             <td>{{atelier.type}}</td>
-                            <td>{{atelier.age|join(', ')}}</td> 
                             <td>{{atelier.prix}}</td>
+                            <td>{{atelier.age|join(', ')}}</td> 
                             <td><a class="btn btn-danger" href="{{path('archiverAtelier',{'id': atelier.id})}}">Archiver</a></td>
                             <td><a class="btn btn-primary" href="{{path('editAtelier',{'id': atelier.id})}}">Modifier</a></br></td>
                         </tr>

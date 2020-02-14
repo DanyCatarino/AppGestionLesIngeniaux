@@ -11,7 +11,9 @@ use App\Form\InstanceType;
 use App\Entity\Instance;
 use App\Entity\Atelier;
 use App\Entity\Salle;
+use App\Entity\Seance;
 use App\Form\SalleType;
+use App\Form\SeanceType;
 use App\Entity\Animateur;
 use App\Form\AnimateurType;
 use App\Form\AtelierType;
@@ -259,6 +261,29 @@ class EditController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('listeIntances');
         }
+    }
+
+    /**
+    * @Route("/editSeance/{id}", name="editSeance")
+    */
+    public function editSeance(EntityManagerInterface $em, Request $request,Seance $seance,Instance $instance)
+    {
+        $seance=$this->getDoctrine()->getRepository(Seance::Class)->findBy(['instance' => $instance]);
+
+        $form = $this->createForm(SeanceType::class, $seance);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $seance->setInstance($instance);
+            $em->persist($seance);
+            $em->flush();
+
+            $this->addFlash('success','Séance ajoutée !');
+            return $this->redirectToRoute('addSeance', ['id'=>$instance->getId()]);
+        }
+        return $this->render('edit/modifSeance.html.twig',array('formObject' => $form, 'seance'=>$seance, 'instance'=>$instance));
     }
 
 }

@@ -1,45 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<style>
+    .example-wrapper { margin: 2em auto; max-width: 1050px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+    .error {color: red}
+</style>
 <div class="jumbotron text-center p-4">
   <h1 class="display-4">Planification</h1>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4 text-center">
-          <a class="btn btn-primary" href="{{path('addInstance')}}">Ajouter une instance</a>
-          <a class="btn btn-secondary" href="{{path('listeInstancesArchiver')}}">Archive</a>
-        </div>
-    </div><br/>
-    <div class="table-responsive-sm">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Public</th>
-            <th scope="col">Atelier</th>
-            <th scope="col">Statut</th>
-            <th scope="col">Animateur</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for instance in allInstances %}
+<div class="example-wrapper">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4 text-center">
+            <a class="btn btn-primary" href="{{path('addInstance')}}">Ajouter une instance</a>
+            <a class="btn btn-secondary" href="{{path('listeInstancesArchiver')}}">Archive</a>
+          </div>
+      </div><br/>
+      <div class="table-responsive-sm">
+        <table class="table">
+          <thead class="thead-dark">
             <tr>
-              <th scope="row">{{instance.id}}</th>
-              <td>{{instance.atelier.public}}</td>
-              <td>{{instance.atelier.titre}}</td>              
-              <td>{{instance.statut}}</td>
-              <td>{{instance.animateur.nom}}</td>
-              <td><a class="btn btn-danger" href="{{path('archiverInstance',{'id': instance.id})}}">Archiver</a></br></td>
-              <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>
+              <th scope="col">ID</th>
+              <th scope="col">Public</th>
+              <th scope="col">Atelier</th>
+              <th scope="col">Statut</th>
+              <th scope="col">Animateur</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
-          {% endfor %}
-        </tbody>
-      </div>
-    </table>
+          </thead>
+          <tbody>
+            {% for instance in allInstances %}
+              <tr>
+                <th scope="row">{{instance.id}}</th>
+                <td>{{instance.atelier.public}}</td>
+                <td>{{instance.atelier.titre}}</td>              
+                <td>{{instance.statut}}</td>
+                <td>{{instance.animateur.nom}}</td>
+                <td><a class="btn btn-success" href="{#{{path('editSeance',{'id' : instance.id})}}#}">Les séances</a></br></td>
+                <td><a class="btn btn-primary" href="{{path('editInstance',{'id' : instance.id})}}">Modifier</a></br></td>
+                <td><a class="btn btn-danger" href="{{path('archiverInstance',{'id': instance.id})}}">Archiver</a></br></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </div>
+      </table>
+    </div>
   </div>
+</div>
 {% endblock %} 

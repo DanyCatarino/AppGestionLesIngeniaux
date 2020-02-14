@@ -41,12 +41,12 @@ class Animateur
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $TelephoneContact;
+    private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Notes;
+    private $notes;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -134,26 +134,26 @@ class Animateur
         return $this;
     }
 
-    public function getTelephoneContact(): ?string
+    public function getTelephone(): ?string
     {
-        return $this->TelephoneContact;
+        return $this->telephone;
     }
 
-    public function setTelephoneContact(string $TelephoneContact): self
+    public function setTelephone(string $telephone): self
     {
-        $this->TelephoneContact = $TelephoneContact;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     public function getNotes(): ?string
     {
-        return $this->Notes;
+        return $this->notes;
     }
 
-    public function setNotes(?string $Notes): self
+    public function setNotes(?string $notes): self
     {
-        $this->Notes = $Notes;
+        $this->Notes = $notes;
 
         return $this;
     }
